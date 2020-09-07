@@ -1,0 +1,43 @@
+{
+  "name": "lyne-icons",
+  "version": "1.0.0",
+  "description": "Icons for the Lyne Design System",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "~10.0.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/exec": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "axios": "~0.20.0",
+    "dotenv": "~8.2.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-yaml": "^0.3.0",
+    "husky": "^4.2.5",
+    "semantic-release": "^17.0.8",
+    "semantic-release-slack-bot": "^1.6.2",
+    "shelljs": "~0.8.4",
+    "simple-git": "~2.20.1"
+  },
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "icons:extract": "node figmaExtractor/figmaIconsExtractor.js",
+    "lint": "npm run lint:yml && npm run lint:js",
+    "lint:js": "eslint ./ --ext .js",
+    "lint:yml": "eslint ./ --ext .yml,.yaml",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyne-design-system/lyne-icons.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lyne-design-system/lyne-icons/issues"
+  },
+  "homepage": "https://github.com/lyne-design-system/lyne-design-tokens#readme"
+}
