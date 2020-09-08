@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/lyne-design-system/lyne-icons/compare/v1.3.0...v2.0.0) (2020-09-08)
+
+
+### Bug Fixes
+
+* second time try workflow for major change ([7111a3f](https://github.com/lyne-design-system/lyne-icons/commit/7111a3f41b8c6206af7215c084c884a6f0d82172))
+
+
+### BREAKING CHANGES
+
+* test major release (triggered from Figma) [skip ci]
+
 # [1.3.0](https://github.com/lyne-design-system/lyne-icons/compare/v1.2.0...v1.3.0) (2020-09-08)
 
 
