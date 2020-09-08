@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/lyne-design-system/lyne-icons/compare/v1.1.1...v1.1.2) (2020-09-08)
+
+
+### Bug Fixes
+
+* rename plus icon (triggered from Figma) [skip ci] ([64e502d](https://github.com/lyne-design-system/lyne-icons/commit/64e502d66df54258784052dbfd390e929beb24d9))
+
 ## [1.1.1](https://github.com/lyne-design-system/lyne-icons/compare/v1.1.0...v1.1.1) (2020-09-08)
 
 
