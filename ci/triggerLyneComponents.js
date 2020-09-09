@@ -1,4 +1,3 @@
-const axios = require('axios');
 const shell = require('shelljs');
 const argv = require('minimist');
 const getCommit = require('./getTravisCommit');
@@ -9,6 +8,7 @@ require('dotenv')
 
 (async () => {
   try {
+    const foo = 'bar';
     const jobId = argv(process.argv.slice(2))['i'];
     const commitMessage = await getCommit(jobId);
 
