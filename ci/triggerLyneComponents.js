@@ -7,11 +7,10 @@ require('dotenv')
   .config();
 
 (async () => {
-  try {
-    const foo = 'bar';
-    const jobId = argv(process.argv.slice(2))['i'];
-    const commitMessage = await getCommit(jobId);
+  const jobId = argv(process.argv.slice(2))['i'];
+  const commitMessage = await getCommit(jobId);
 
+  try {
     await triggerTravis({
       branchName: 'master',
       message: `${commitMessage} (triggered from icons build)`,
@@ -20,6 +19,7 @@ require('dotenv')
     });
 
     shell.exit(0);
+
   } catch (e) {
     console.log('-->> Error while triggering travis build on lyne-components.');
     console.log(e);
