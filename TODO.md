@@ -1,0 +1,1 @@
+- only trigger lyne-components if there was actually a release
