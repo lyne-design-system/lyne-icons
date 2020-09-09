@@ -26,4 +26,4 @@ module.exports = (iconData, config) => {
 
   console.log('SVG INFO: saved svg\'s');
 
-}
+};

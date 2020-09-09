@@ -86,7 +86,7 @@ const getMergedIdsAndNames = (names, urls) => {
 
   urlKeys.forEach((urlKey) => {
     const name = names[urlKey];
-    const url = urls[urlKey]
+    const url = urls[urlKey];
 
     mergedIconInfo.push({
       id: urlKey,
@@ -112,7 +112,7 @@ const getIconContentRequests = (iconsInfo) => {
       },
       method: 'GET',
       url: info.url
-    }
+    };
 
     const request = axios.request(config);
 
