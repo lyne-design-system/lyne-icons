@@ -1,4 +1,2 @@
-.eslintrc.js
-
 # not ignored folders/files
 !.travis.yml
