@@ -1,6 +1,5 @@
 const shell = require('shelljs');
-const figmaApi = require('./figmaApi');
-const getFigmaFrames = require('./figmaFrames');
+const figma = require('lyne-helper-figma-api');
 const figmaIcons = require('./figmaIcons');
 const writeSvgData = require('./figmaWriteSvgData');
 
@@ -19,7 +18,8 @@ const config = {
     folder: 'dist',
     infoFile: 'icons',
     subfolder: 'icons'
-  }
+  },
+  pagesIgnorePattern: '***ignore***'
 };
 
 // self-invoking
@@ -32,9 +32,15 @@ const config = {
       token: process.env.FIGMA_ACCESS_TOKEN
     };
 
-    const figmaData = await figmaApi(apiConfig);
-    const figmaFrames = getFigmaFrames(figmaData, config);
-    const iconData = await figmaIcons(figmaFrames, apiConfig);
+    const figmaDocument = await figma.document(apiConfig.file, apiConfig.token);
+    const pages = figma.pages(figmaDocument, config.pagesIgnorePattern);
+
+    if (!pages || pages.length < 1) {
+      throw new Error('No relevant figma pages found.');
+    }
+
+    const frames = figma.frames(pages[0], config.frameIgnorePattern);
+    const iconData = await figmaIcons(frames, apiConfig);
 
     writeSvgData(iconData, config);
 
