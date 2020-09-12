@@ -8,11 +8,6 @@ require('dotenv')
 
 // general configuration
 const config = {
-  figma: {
-    childTypes: {
-      frame: 'FRAME'
-    }
-  },
   frameIgnorePattern: '***ignore***',
   output: {
     folder: 'dist',
