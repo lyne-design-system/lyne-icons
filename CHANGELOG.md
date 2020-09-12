@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.0...v3.1.1) (2020-09-12)
+
+
+### Bug Fixes
+
+* use lyne figma helper ([c5cdd9b](https://github.com/lyne-design-system/lyne-icons/commit/c5cdd9b3136ac7321cf6fdbe12379672ae3d70ec))
+
 # [3.1.0](https://github.com/lyne-design-system/lyne-icons/compare/v3.0.0...v3.1.0) (2020-09-08)
 
 
