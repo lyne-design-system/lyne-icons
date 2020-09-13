@@ -1,3 +1,10 @@
+## [3.1.7](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.6...v3.1.7) (2020-09-13)
+
+
+### Bug Fixes
+
+* update trigger helper ([d3085a2](https://github.com/lyne-design-system/lyne-icons/commit/d3085a28a5ce85825ec023ad5232d7adfa5e45b3))
+
 ## [3.1.6](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.5...v3.1.6) (2020-09-13)
 
 
