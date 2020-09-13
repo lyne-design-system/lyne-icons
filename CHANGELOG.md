@@ -1,3 +1,11 @@
+## [3.1.3](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.2...v3.1.3) (2020-09-13)
+
+
+### Bug Fixes
+
+* fake commit to trigger release ([a0bd2bb](https://github.com/lyne-design-system/lyne-icons/commit/a0bd2bbb06c0569ae6e98dd141bc5970861af413))
+* update to latest version of figma api helper ([a69dd1b](https://github.com/lyne-design-system/lyne-icons/commit/a69dd1b48683a056ad411bcce87cca8ea975be66))
+
 ## [3.1.2](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.1...v3.1.2) (2020-09-13)
 
 
