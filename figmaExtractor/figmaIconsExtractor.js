@@ -17,7 +17,6 @@ const config = {
   pagesIgnorePattern: '***ignore***'
 };
 
-// self-invoking
 (async () => {
   try {
 
