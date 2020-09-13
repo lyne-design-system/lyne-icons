@@ -1,3 +1,10 @@
+## [3.1.5](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.4...v3.1.5) (2020-09-13)
+
+
+### Bug Fixes
+
+* update deps ([1abf36f](https://github.com/lyne-design-system/lyne-icons/commit/1abf36fd06a6b7cfc562cf578caa9ec18566883e))
+
 ## [3.1.4](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.3...v3.1.4) (2020-09-13)
 
 
