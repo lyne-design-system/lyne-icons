@@ -1,3 +1,10 @@
+## [3.1.6](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.5...v3.1.6) (2020-09-13)
+
+
+### Bug Fixes
+
+* move travis trigger helper from dev deps to deps ([ad3bc76](https://github.com/lyne-design-system/lyne-icons/commit/ad3bc764ca0d99a216bc8d604170fe8cb6bcefc2))
+
 ## [3.1.5](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.4...v3.1.5) (2020-09-13)
 
 
