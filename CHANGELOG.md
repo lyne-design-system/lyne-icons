@@ -1,3 +1,10 @@
+## [3.1.4](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.3...v3.1.4) (2020-09-13)
+
+
+### Bug Fixes
+
+* update to latest version of figma api helper ([d8d6915](https://github.com/lyne-design-system/lyne-icons/commit/d8d6915d0361c5820b53d73efa0ae711c4c26623))
+
 ## [3.1.3](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.2...v3.1.3) (2020-09-13)
 
 
