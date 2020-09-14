@@ -11,7 +11,10 @@ require('dotenv')
   const jobId = args['i'];
   const version = args['j'];
 
-  if (!version) {
+  console.log('VERSION');
+  console.log(version);
+
+  if (!version || version === true) {
     console.log('No new version was released, thus not triggering lyne-components');
     shell.exit(0);
   }
