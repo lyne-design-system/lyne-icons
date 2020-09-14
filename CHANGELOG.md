@@ -1,3 +1,10 @@
+## [3.1.8](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.7...v3.1.8) (2020-09-14)
+
+
+### Bug Fixes
+
+* add log (fake fix commit to test release workflow) ([469778d](https://github.com/lyne-design-system/lyne-icons/commit/469778d8a7874ee249638fc4e6f5514f4721c82b))
+
 ## [3.1.7](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.6...v3.1.7) (2020-09-13)
 
 
