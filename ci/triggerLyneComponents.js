@@ -7,7 +7,15 @@ require('dotenv')
   .config();
 
 (async () => {
-  const jobId = argv(process.argv.slice(2))['i'];
+  const args = argv(process.argv.slice(2));
+  const jobId = args['i'];
+  const version = args['j'];
+
+  if (!version) {
+    console.log('No new version was releases, thus not triggering lyne-components');
+    shell.exit(0);
+  }
+
   const commitMessage = await getCommit(jobId);
 
   try {
