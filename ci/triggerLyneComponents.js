@@ -12,9 +12,11 @@ require('dotenv')
   const version = args['j'];
 
   if (!version) {
-    console.log('No new version was releases, thus not triggering lyne-components');
+    console.log('No new version was released, thus not triggering lyne-components');
     shell.exit(0);
   }
+
+  console.log('New version released, therefore will trigger lyne-components');
 
   const commitMessage = await getCommit(jobId);
 
