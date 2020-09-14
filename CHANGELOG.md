@@ -1,3 +1,10 @@
+## [3.1.9](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.8...v3.1.9) (2020-09-14)
+
+
+### Bug Fixes
+
+* try workflow with release ([c2309a4](https://github.com/lyne-design-system/lyne-icons/commit/c2309a466e08693333eba2a1ecdd293513e6e46d))
+
 ## [3.1.8](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.7...v3.1.8) (2020-09-14)
 
 
