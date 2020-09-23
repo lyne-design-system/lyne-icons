@@ -52,6 +52,9 @@ const copyFiles = (source, destination) => {
 
   console.log(`-->> Generate CDN Assets: version ${version}`);
 
+  await git.checkout('master');
+  await git.pull();
+
   // make sure cdn folder exists
   if (!fs.existsSync(cdnDir)) {
     fs.mkdirSync(cdnDir);
@@ -84,8 +87,6 @@ const copyFiles = (source, destination) => {
     // commit and push files in cdn folder
     const cdnFiles = getAllFiles(cdnDir);
 
-    await git.checkout('master');
-    await git.pull();
     await git.add(cdnFiles);
     await git.add(`./${config.distFolder}/${config.iconsInfoFile}`);
     await git.commit(`chore: add CDN assets for version ${version} [skip ci]`);
