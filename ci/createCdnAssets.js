@@ -29,7 +29,17 @@ const writeVersionJsonFile = (version) => {
 };
 
 const copyFiles = (source, destination) => {
-  ncp(source, destination, (err) => err);
+  const promise = new Promise((resolve, reject) => {
+    ncp(source, destination, (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(true);
+      }
+    });
+  });
+
+  return promise;
 };
 
 (async () => {
@@ -64,33 +74,24 @@ const copyFiles = (source, destination) => {
   // write new version icons.json
   writeVersionJsonFile(version);
 
-  // copy files to archive version folder
-  if (copyFiles(distDir, versionDir) !== undefined) {
-    console.log('-->> Generate CDN Assets: error in copying files to versions folder');
-    shell.exit(0);
+  try {
+    // copy files to archive version folder
+    await copyFiles(distDir, versionDir);
+
+    // copy files to cdn folder
+    await copyFiles(distDir, cdnDir);
+
+    // commit and push files in cdn folder
+    const cdnFiles = getAllFiles(cdnDir);
+
+    await git.add(cdnFiles);
+    await git.commit(`chore: add CDN assets for version ${version} [skip ci]`);
+    await git.push('origin', 'master', {
+      '--no-rebase': true
+    });
+
+    console.log('-->> Generate CDN Assets: generated and pushed to git');
+  } catch (error) {
+    console.log(`-->> Generate CDN Assets: ${error}`);
   }
-
-  // copy files to cdn folder
-  if (copyFiles(distDir, cdnDir) !== undefined) {
-    console.log('-->> Generate CDN Assets: error in copying files to cdn folder');
-    shell.exit(0);
-  }
-
-  // commit and push files in cdn folder
-  const cdnFiles = getAllFiles(cdnDir);
-
-  console.log('FILES');
-  console.log(cdnFiles);
-
-  // await git.checkout('master');
-
-  // await git.pull();
-
-  await git.add(cdnFiles);
-  await git.commit(`chore: Add CDN assets for version ${version} [skip ci]`);
-  await git.push('origin', 'master', {
-    '--no-rebase': true
-  });
-
-  console.log('-->> Generate CDN Assets: generated and pushed to git');
 })();
