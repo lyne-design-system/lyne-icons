@@ -90,7 +90,7 @@ const copyFiles = (source, destination) => {
       '--force': true
     });
 
-    console.log('-->> Generate CDN Assets: generated and pushed to git');
+    console.log('-->> Generate CDN Assets: generated and pushed assets to git');
   } catch (error) {
     console.log(`-->> Generate CDN Assets: ${error}`);
   }
