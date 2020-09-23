@@ -1,3 +1,11 @@
+## [4.0.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.0.2...v4.0.3) (2020-09-23)
+
+
+### Bug Fixes
+
+* remove true folder ([4fa7b14](https://github.com/lyne-design-system/lyne-icons/commit/4fa7b149402dd869102b0b7b2bc74bb3c36ed161))
+* remove true folder [skip ci] ([62c4e30](https://github.com/lyne-design-system/lyne-icons/commit/62c4e30895e38c639079b399a983a1fafeb55b0f))
+
 ## [4.0.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.0.1...v4.0.2) (2020-09-23)
 
 
