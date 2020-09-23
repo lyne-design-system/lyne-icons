@@ -3,6 +3,14 @@
 
 ### Bug Fixes
 
+* use correct env variable for netlify token ([dcd22fd](https://github.com/lyne-design-system/lyne-icons/commit/dcd22fd8ba242440ea459e0e59d7a943c0cd9380))
+* use correct push argument ([51e3447](https://github.com/lyne-design-system/lyne-icons/commit/51e344726f68765231917778ab4e0b642e495414))
+
+## [3.2.7](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.6...v3.2.7) (2020-09-23)
+
+
+### Bug Fixes
+
 * use correct push argument ([51e3447](https://github.com/lyne-design-system/lyne-icons/commit/51e344726f68765231917778ab4e0b642e495414))
 
 ## [3.2.6](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.5...v3.2.6) (2020-09-23)
