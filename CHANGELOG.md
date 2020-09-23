@@ -1,3 +1,18 @@
+# [3.2.0](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.9...v3.2.0) (2020-09-23)
+
+
+### Bug Fixes
+
+* adhere to changes in info icons file ([8529b67](https://github.com/lyne-design-system/lyne-icons/commit/8529b67bb7edaae5cefd4ae4b2726ac73867bc3b))
+* make sure correct folder is deployed ([01fc953](https://github.com/lyne-design-system/lyne-icons/commit/01fc9535a4de58283d36ddeb16bbe8e8c15021da))
+
+
+### Features
+
+* add file to generate cdn assets ([87b25b7](https://github.com/lyne-design-system/lyne-icons/commit/87b25b7b84b3cec61b04b54224fa0636a46e68fb))
+* add script to deploy to netlify ([adf3465](https://github.com/lyne-design-system/lyne-icons/commit/adf3465b74dcaf22b90764f08181a8df72680f66))
+* add scripts for creation and deployment of cdn assets ([fd5fbfe](https://github.com/lyne-design-system/lyne-icons/commit/fd5fbfe63c27e7b0463cfc4b5dafa65ce8be8018))
+
 ## [3.1.9](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.8...v3.1.9) (2020-09-14)
 
 
