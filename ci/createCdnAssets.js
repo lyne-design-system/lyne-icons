@@ -40,7 +40,7 @@ const copyFiles = (source, destination) => {
   const archiveDir = `${cdnDir}/${config.archiveFolder}`;
   const versionDir = `${archiveDir}/${version}`;
 
-  console.log(`-->> Archive Icons: version ${version}`);
+  console.log(`-->> Generate CDN Assets: version ${version}`);
 
   // make sure cdn folder exists
   if (!fs.existsSync(cdnDir)) {
@@ -54,7 +54,7 @@ const copyFiles = (source, destination) => {
 
   // check if version folder already exists
   if (fs.existsSync(versionDir)) {
-    console.log('-->> Archive Icons: current release version already exists in archive.');
+    console.log('-->> Generate CDN Assets: current release version already exists in archive.');
     shell.exit(0);
   }
 
@@ -66,13 +66,13 @@ const copyFiles = (source, destination) => {
 
   // copy files to archive version folder
   if (copyFiles(distDir, versionDir) !== undefined) {
-    console.log('-->> Archive Icons: error in copying files to versions folder');
+    console.log('-->> Generate CDN Assets: error in copying files to versions folder');
     shell.exit(0);
   }
 
   // copy files to cdn folder
   if (copyFiles(distDir, cdnDir) !== undefined) {
-    console.log('-->> Archive Icons: error in copying files to cdn folder');
+    console.log('-->> Generate CDN Assets: error in copying files to cdn folder');
     shell.exit(0);
   }
 
@@ -83,4 +83,5 @@ const copyFiles = (source, destination) => {
   await git.commit(`Add assets for version ${version} [skip ci]`);
   await git.push('origin', 'master');
 
+  console.log('Generate CDN Assets: generated and pushed to git');
 })();
