@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.2.0...v4.3.0) (2020-09-23)
+
+
+### Features
+
+* add minus icon (triggered from Figma) [skip ci] ([f47ac5b](https://github.com/lyne-design-system/lyne-icons/commit/f47ac5b54a07eadb1d15191b9f1e4b7d53f6a930))
+
 # [4.2.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.1.0...v4.2.0) (2020-09-23)
 
 
