@@ -1,3 +1,11 @@
+## [4.0.4](https://github.com/lyne-design-system/lyne-icons/compare/v4.0.3...v4.0.4) (2020-09-23)
+
+
+### Bug Fixes
+
+* make sure that cdn assets are created only if new version is released ([cf202ce](https://github.com/lyne-design-system/lyne-icons/commit/cf202cee2bed6ffa2fcd2f01bdf6ec927620c226))
+* make sure that cdn assets are created only if new version is released [skip ci] ([e11c2f1](https://github.com/lyne-design-system/lyne-icons/commit/e11c2f181a774f480e828b81364f4037bad20dda))
+
 ## [4.0.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.0.2...v4.0.3) (2020-09-23)
 
 
