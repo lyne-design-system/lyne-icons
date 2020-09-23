@@ -79,11 +79,14 @@ const copyFiles = (source, destination) => {
   // commit and push files in cdn folder
   const cdnFiles = getAllFiles(cdnDir);
 
+  console.log('FILES');
+  console.log(cdnFiles);
+
   await git.checkout('master');
   await git.pull();
   await git.add(cdnFiles);
-  await git.commit(`chore: Add assets for version ${version} [skip ci]`);
+  await git.commit(`chore: Add CDN assets for version ${version} [skip ci]`);
   await git.push('origin', 'master');
 
-  console.log('Generate CDN Assets: generated and pushed to git');
+  console.log('-->> Generate CDN Assets: generated and pushed to git');
 })();
