@@ -1,3 +1,12 @@
+## [4.0.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.0.1...v4.0.2) (2020-09-23)
+
+
+### Bug Fixes
+
+* checkout and pull before creating files ([eb3a67e](https://github.com/lyne-design-system/lyne-icons/commit/eb3a67ea5296661eb5daa208c7ce36a6c8f14885))
+* checkout and pull before creating files [skip ci] ([ee15f20](https://github.com/lyne-design-system/lyne-icons/commit/ee15f20953317178962c1e6f98deea8abced5891))
+* make sure that icons info file is commited as well ([7347662](https://github.com/lyne-design-system/lyne-icons/commit/7347662723056e53947a16a0ca30752886b317fb))
+
 ## [4.0.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.0.0...v4.0.1) (2020-09-23)
 
 
