@@ -17,7 +17,10 @@ then
 
   VERSION="$(cat .version)"
 
-  # Deploy Storybook on Netlify
+  # generate cdn assets
+  node ./createCdnAssets.js -i $VERSION
+
+  # Deploy CDN assets to netlify
   netlify deploy --prod --message "::$VERSION::" --site $NETLIFY_SITE_ID --auth $NETLIFY_TOKEN --dir ./cdn/
 
 else

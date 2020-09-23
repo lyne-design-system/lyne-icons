@@ -25,5 +25,4 @@ jobs:
 
       # prepare git for pushes
       - git remote set-url origin https://lyne-design-system:$GH_TOKEN@github.com/lyne-design-system/lyne-icons.git || travis_terminate 1
-      - node ./ci/createCdnAssets.js -i $(< .version) || travis_terminate 1
       - ./ci/deploy_cdn_assets.sh
