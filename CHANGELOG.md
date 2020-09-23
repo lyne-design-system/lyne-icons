@@ -1,3 +1,12 @@
+## [3.2.1](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.0...v3.2.1) (2020-09-23)
+
+
+### Bug Fixes
+
+* add semantic commit message ([ace0f92](https://github.com/lyne-design-system/lyne-icons/commit/ace0f927801d6f52252cd95e09ce71258af868d9))
+* remove test file ([a2dddd6](https://github.com/lyne-design-system/lyne-icons/commit/a2dddd6b3f17c6e927d1f0cc048c409f5f5b4a9a))
+* try to authenticate via set-url ([dba0e0a](https://github.com/lyne-design-system/lyne-icons/commit/dba0e0ae097a9e99b55f96c926556b88026e8499))
+
 # [3.2.0](https://github.com/lyne-design-system/lyne-icons/compare/v3.1.9...v3.2.0) (2020-09-23)
 
 
