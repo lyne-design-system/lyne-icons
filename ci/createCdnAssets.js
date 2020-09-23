@@ -82,11 +82,15 @@ const copyFiles = (source, destination) => {
   console.log('FILES');
   console.log(cdnFiles);
 
-  await git.checkout('master');
-  await git.pull();
+  // await git.checkout('master');
+
+  // await git.pull();
+
   await git.add(cdnFiles);
   await git.commit(`chore: Add CDN assets for version ${version} [skip ci]`);
-  await git.push('origin', 'master');
+  await git.push('origin', 'master', {
+    '--no-rebase': true
+  });
 
   console.log('-->> Generate CDN Assets: generated and pushed to git');
 })();
