@@ -15,15 +15,15 @@ jobs:
   include:
     - stage: build and deploy icons
       script:
-      - npm run lint
-      - npm run icons:extract
-      - node ./ci/gitPushProperties.js -i "$TRAVIS_BUILD_ID"
+      - npm run lint || travis_terminate 1
+      - npm run icons:extract || travis_terminate 1
+      - node ./ci/gitPushProperties.js -i "$TRAVIS_BUILD_ID" || travis_terminate 1
 
       after_success:
-      - npm run semantic-release
-      - node ./ci/triggerLyneComponents.js -i "$TRAVIS_BUILD_ID" -j $(< .version)
+      - npm run semantic-release || travis_terminate 1
+      - node ./ci/triggerLyneComponents.js -i "$TRAVIS_BUILD_ID" -j $(< .version) || travis_terminate 1
 
       # prepare git for pushes
-      - git remote set-url origin https://lyne-design-system:$(GH_TOKEN)@github.com/lyne-design-system/lyne-icons.git
-      - node ./ci/createCdnAssets.js -i $(< .version)
+      - git remote set-url origin https://lyne-design-system:$GH_TOKEN@github.com/lyne-design-system/lyne-icons.git || travis_terminate 1
+      - node ./ci/createCdnAssets.js -i $(< .version) || travis_terminate 1
       - ./ci/deploy_cdn_assets.sh
