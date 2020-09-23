@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.1...v3.2.2) (2020-09-23)
+
+
+### Bug Fixes
+
+* try to use variable correctly, and correctly exit travis on error ([f701275](https://github.com/lyne-design-system/lyne-icons/commit/f7012751800ca1a193c741839c53a5a324de1d73))
+
 ## [3.2.1](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.0...v3.2.1) (2020-09-23)
 
 
