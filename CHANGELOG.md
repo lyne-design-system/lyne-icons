@@ -1,3 +1,11 @@
+## [3.2.5](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.4...v3.2.5) (2020-09-23)
+
+
+### Bug Fixes
+
+* add log ([1b634b0](https://github.com/lyne-design-system/lyne-icons/commit/1b634b0f268d4e2e25db6719f887d8d0b76bdf88))
+* use force push ([67c1712](https://github.com/lyne-design-system/lyne-icons/commit/67c171219a194cf9007474c3c2ebc17871b3ad5a))
+
 ## [3.2.4](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.3...v3.2.4) (2020-09-23)
 
 
