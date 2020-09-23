@@ -1,3 +1,10 @@
+## [3.2.6](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.5...v3.2.6) (2020-09-23)
+
+
+### Bug Fixes
+
+* fix issue with async copy method ([ad88ee6](https://github.com/lyne-design-system/lyne-icons/commit/ad88ee61e6536009a2cb5bb2519f9db7f0fe5777))
+
 ## [3.2.5](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.4...v3.2.5) (2020-09-23)
 
 
