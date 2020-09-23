@@ -1,3 +1,10 @@
+## [3.2.4](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.3...v3.2.4) (2020-09-23)
+
+
+### Bug Fixes
+
+* checkout first ([0a9b0c8](https://github.com/lyne-design-system/lyne-icons/commit/0a9b0c89002d4e6d85d7f04a99df60cc5e70f450))
+
 ## [3.2.3](https://github.com/lyne-design-system/lyne-icons/compare/v3.2.2...v3.2.3) (2020-09-23)
 
 
