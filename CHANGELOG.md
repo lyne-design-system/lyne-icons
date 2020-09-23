@@ -1,3 +1,10 @@
+## [4.0.5](https://github.com/lyne-design-system/lyne-icons/compare/v4.0.4...v4.0.5) (2020-09-23)
+
+
+### Bug Fixes
+
+* use correct path ([3cd2260](https://github.com/lyne-design-system/lyne-icons/commit/3cd2260e0e3082c7cea805a4d6bd95e982452154))
+
 ## [4.0.4](https://github.com/lyne-design-system/lyne-icons/compare/v4.0.3...v4.0.4) (2020-09-23)
 
 
