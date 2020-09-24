@@ -96,6 +96,9 @@ const copyFiles = (source, destination) => {
     const cdnFiles = getAllFiles(cdnDir);
 
     await git.add(cdnFiles);
+
+    // simplest way in case we deleted something
+    await git.add(`${distDir}/*`);
     await git.commit(`chore: add CDN assets for version ${version} [skip ci]`);
     await git.push('origin', 'master', {
       '--force': true
