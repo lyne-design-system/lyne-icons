@@ -1,3 +1,11 @@
+## [4.7.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.7.0...v4.7.1) (2020-09-24)
+
+
+### Bug Fixes
+
+* correctly sort versions for html file ([6d13682](https://github.com/lyne-design-system/lyne-icons/commit/6d13682d5f437f99c8b86a8c322c1b9870a9dbff))
+* correctly sort versions for html file [skip ci] ([32e0a6f](https://github.com/lyne-design-system/lyne-icons/commit/32e0a6f102b31b22d8ee703f19936ba7226ab6f8))
+
 # [4.7.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.6.6...v4.7.0) (2020-09-24)
 
 
