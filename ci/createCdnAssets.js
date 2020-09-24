@@ -16,6 +16,7 @@ const git = simpleGit();
 const config = {
   archiveFolder: 'versions',
   cdnFolder: 'cdn',
+  cdnVersionsFile: 'versions.json',
   distFolder: 'dist',
   iconsFolder: 'icons',
   iconsInfoFile: 'icons.json'
@@ -44,9 +45,75 @@ const copyFiles = (source, destination) => {
   return promise;
 };
 
+const createVersionsFile = () => {
+  const files = fs.readdirSync(`./${config.cdnFolder}/${config.archiveFolder}`);
+  const fileContent = {};
+
+  files.forEach((file) => {
+    const rootPath = `/${config.archiveFolder}/${file}`;
+
+    fileContent[file] = {
+      icons: `${rootPath}/${config.iconsFolder}/`,
+      infoFile: `${rootPath}/${config.iconsInfoFile}`,
+      url: rootPath
+    };
+
+  });
+
+  fs.writeFileSync(`./${config.cdnFolder}/${config.cdnVersionsFile}`, JSON.stringify(fileContent));
+};
+
+const createIndexHtmlPage = () => {
+  const rawVersions = fs.readFileSync(`./${config.cdnFolder}/${config.cdnVersionsFile}`);
+  const versions = JSON.parse(rawVersions);
+
+  const html = `
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Lyne Icons CDN</title>
+    </head>
+    <body>
+      <h1>CDN for Lyne Icons</h1>
+
+      <p>Every release has a folder containing all the icons. Additionally, there is a icons.json file containing all icons as string representation along with other additonal info.</p>
+
+      <p>There is a JSON-File containing all the versions along with the corresponding urls to the icon folders and the icons.json files: <a href="/${config.cdnVersionsFile}">versions.json</a></p>
+
+      <h2>Directories</h2>
+
+      <h3>Latest Release</h3>
+      <p><a href="/${config.iconsFolder}">Icons folder</a></p>
+      <p><a href="/${config.iconsInfoFile}">icons.json</a></p>
+
+      <h3>Versions</h3>
+      <ul>
+      ${Object.keys(versions)
+    .map((key) => {
+      const versionItem = versions[key];
+      const liElem = `
+      <li>
+        <h4>Version ${key}</h4>
+        <p>Root URL: <a href="${versionItem.url}/">${versionItem.url}/</a></p>
+        <p>Icons folder: <a href="${versionItem.icons}">${versionItem.icons}</a></p>
+        <p>Icons info file: <a href="${versionItem.infoFile}">${versionItem.infoFile}</a></p>
+      </li>`;
+
+      return liElem;
+    })
+    .join('')}
+      </ul>
+
+    </body>
+  </html>
+  `;
+
+  fs.writeFileSync(`./${config.cdnFolder}/index.html`, html);
+};
+
 (async () => {
-  console.log('do');
-  return;
+
   const args = argv(process.argv.slice(2));
   const version = args['i'];
   const cdnDir = `./${config.cdnFolder}`;
@@ -91,6 +158,12 @@ const copyFiles = (source, destination) => {
 
     // copy files to cdn folder
     await copyFiles(distDir, cdnDir);
+
+    // create versions file
+    createVersionsFile();
+
+    // create index page
+    createIndexHtmlPage();
 
     // add all files, commit and push
     await git.add(`${cdnDir}/*`);
