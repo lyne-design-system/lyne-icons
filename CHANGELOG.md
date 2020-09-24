@@ -1,3 +1,11 @@
+## [4.4.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.0...v4.4.1) (2020-09-24)
+
+
+### Bug Fixes
+
+* linting issue ([a4874a0](https://github.com/lyne-design-system/lyne-icons/commit/a4874a0a92af0160378015c72074d5536390886b))
+* make sure that icons in dist and root cdn are deleted before build ([f23be65](https://github.com/lyne-design-system/lyne-icons/commit/f23be656fa62b2e9705c3461dc67c120ca2c6f84))
+
 # [4.4.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.3.1...v4.4.0) (2020-09-24)
 
 
