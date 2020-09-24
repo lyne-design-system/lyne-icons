@@ -88,7 +88,6 @@ const copyFiles = (source, destination) => {
     const cdnFiles = getAllFiles(cdnDir);
 
     await git.add(cdnFiles);
-    await git.add(`./${config.distFolder}/${config.iconsInfoFile}`);
     await git.commit(`chore: add CDN assets for version ${version} [skip ci]`);
     await git.push('origin', 'master', {
       '--force': true
