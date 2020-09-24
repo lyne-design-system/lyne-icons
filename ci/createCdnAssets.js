@@ -45,6 +45,8 @@ const copyFiles = (source, destination) => {
 };
 
 (async () => {
+  console.log('do');
+  return;
   const args = argv(process.argv.slice(2));
   const version = args['i'];
   const cdnDir = `./${config.cdnFolder}`;
