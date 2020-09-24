@@ -1,3 +1,10 @@
+## [4.6.4](https://github.com/lyne-design-system/lyne-icons/compare/v4.6.3...v4.6.4) (2020-09-24)
+
+
+### Bug Fixes
+
+* test add 3 (triggered from Figma) [skip ci] ([d913303](https://github.com/lyne-design-system/lyne-icons/commit/d913303abae2a3220fb800fe30e6e12773849883))
+
 ## [4.6.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.6.2...v4.6.3) (2020-09-24)
 
 
