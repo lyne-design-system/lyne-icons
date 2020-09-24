@@ -1,3 +1,11 @@
+## [4.3.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.3.0...v4.3.1) (2020-09-24)
+
+
+### Bug Fixes
+
+* remove obsolete git.add ([440f2e6](https://github.com/lyne-design-system/lyne-icons/commit/440f2e679c5a4446c09f666c490d0d7dde3bf562))
+* remove obsolete git.add [skip ci] ([6359f7a](https://github.com/lyne-design-system/lyne-icons/commit/6359f7a07505053b0a9f1bfb5fb4ffcd78702fc0))
+
 # [4.3.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.2.0...v4.3.0) (2020-09-23)
 
 
