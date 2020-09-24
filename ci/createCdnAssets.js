@@ -93,7 +93,6 @@ const copyFiles = (source, destination) => {
     // add all files, commit and push
     await git.add(`${cdnDir}/*`);
     await git.add(`${distDir}/*`);
-
     await git.commit(`chore: add CDN assets for version ${version} [skip ci]`);
     await git.push('origin', 'master', {
       '--force': true
