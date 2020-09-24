@@ -82,6 +82,7 @@ const copyFiles = (source, destination) => {
   writeVersionJsonFile(version);
 
   // delete icons folder in cdn folder
+  console.log('WILL DELETE ICONS FOLDER IN CDN DIR:', rootIconsFolder);
   rimraf.sync(rootIconsFolder);
 
   try {
