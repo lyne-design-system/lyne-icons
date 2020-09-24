@@ -1,3 +1,10 @@
+## [4.4.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.1...v4.4.2) (2020-09-24)
+
+
+### Bug Fixes
+
+* use correct icons folder name ([e7add43](https://github.com/lyne-design-system/lyne-icons/commit/e7add431da771e65f7c975c550cbf1847b34924c))
+
 ## [4.4.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.0...v4.4.1) (2020-09-24)
 
 
