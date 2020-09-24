@@ -1,3 +1,16 @@
+# [4.7.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.6.6...v4.7.0) (2020-09-24)
+
+
+### Bug Fixes
+
+* remove test folder ([e2bd7ff](https://github.com/lyne-design-system/lyne-icons/commit/e2bd7ffc9e273a69b8c64995c7c29bbca00dd7a3))
+
+
+### Features
+
+* create versions.json and index.html ([47ce6dc](https://github.com/lyne-design-system/lyne-icons/commit/47ce6dcc7e4d7a7af00c56915384505006375950))
+* create versions.json and index.html [skip ci] ([e5f7dcb](https://github.com/lyne-design-system/lyne-icons/commit/e5f7dcbfa2abf03a15aaab17128b72b913668d46))
+
 ## [4.6.6](https://github.com/lyne-design-system/lyne-icons/compare/v4.6.5...v4.6.6) (2020-09-24)
 
 
