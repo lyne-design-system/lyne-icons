@@ -1,3 +1,17 @@
+## [4.6.6](https://github.com/lyne-design-system/lyne-icons/compare/v4.6.5...v4.6.6) (2020-09-24)
+
+
+### Bug Fixes
+
+* readd add icon (triggered from Figma) [skip ci] ([865a471](https://github.com/lyne-design-system/lyne-icons/commit/865a471d3ace2efc49829e069e4fb4c281ccbfd5))
+
+## [4.6.5](https://github.com/lyne-design-system/lyne-icons/compare/v4.6.4...v4.6.5) (2020-09-24)
+
+
+### Bug Fixes
+
+* readding minus file (triggered from Figma) [skip ci] ([5cd7035](https://github.com/lyne-design-system/lyne-icons/commit/5cd7035c4d2c3554a7a531fddf7824d151a2bc93))
+
 ## [4.6.4](https://github.com/lyne-design-system/lyne-icons/compare/v4.6.3...v4.6.4) (2020-09-24)
 
 
