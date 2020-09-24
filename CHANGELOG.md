@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.8...v4.5.0) (2020-09-24)
+
+
+### Features
+
+* add (triggered from Figma) [skip ci] ([7d01f65](https://github.com/lyne-design-system/lyne-icons/commit/7d01f65a1a138ff97d4bcfda0235c3db7d6cac1d))
+
 ## [4.4.8](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.7...v4.4.8) (2020-09-24)
 
 
