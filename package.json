@@ -1,6 +1,6 @@
 {
   "name": "lyne-icons",
-  "version": "4.4.3",
+  "version": "4.4.4",
   "description": "Icons for the Lyne Design System",
   "main": "index.js",
   "dependencies": {
