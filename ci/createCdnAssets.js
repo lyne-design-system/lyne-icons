@@ -47,9 +47,29 @@ const copyFiles = (source, destination) => {
 
 const createVersionsFile = () => {
   const files = fs.readdirSync(`./${config.cdnFolder}/${config.archiveFolder}`);
+
+  files.sort((a, b) => {
+    const aRemoveDot = a.replace('.', 0);
+    const bRemoveDot = b.replace('.', 0);
+    const aInt = parseInt(aRemoveDot, 10);
+    const bInt = parseInt(bRemoveDot, 10);
+
+    if (aInt > bInt) {
+      return 1;
+    }
+
+    if (aInt < bInt) {
+      return -1;
+    }
+
+    return 0;
+  });
+
+  const reversed = files.reverse();
+
   const fileContent = {};
 
-  files.forEach((file) => {
+  reversed.forEach((file) => {
     const rootPath = `/${config.archiveFolder}/${file}`;
 
     fileContent[file] = {
