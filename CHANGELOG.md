@@ -1,3 +1,12 @@
+## [4.4.5](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.4...v4.4.5) (2020-09-24)
+
+
+### Bug Fixes
+
+* fake commit to trigger release ([0c284e8](https://github.com/lyne-design-system/lyne-icons/commit/0c284e81d135b41d4bad496bda7639c72e064026))
+* fake commit to trigger release [skip ci] ([f3d9737](https://github.com/lyne-design-system/lyne-icons/commit/f3d97376cde96e917e00ba664a4762710211a1b1))
+* make sure all changes are committed ([202c100](https://github.com/lyne-design-system/lyne-icons/commit/202c10091a9f52ae6968a714d4bb19aaf90557c0))
+
 ## [4.4.4](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.3...v4.4.4) (2020-09-24)
 
 
