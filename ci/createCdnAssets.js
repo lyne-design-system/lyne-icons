@@ -102,6 +102,6 @@ const copyFiles = (source, destination) => {
 
     console.log('-->> Generate CDN Assets: generated and pushed assets to git');
   } catch (error) {
-    console.log(`-->> Generate CDN Assets: ${error}`);
+    console.log(`-->> Generate CDN Assets error: ${error}`);
   }
 })();
