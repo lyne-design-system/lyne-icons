@@ -1,3 +1,10 @@
+## [4.4.7](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.6...v4.4.7) (2020-09-24)
+
+
+### Bug Fixes
+
+* test pipeline by adding minus icon (triggered from Figma) [skip ci] ([defa7cb](https://github.com/lyne-design-system/lyne-icons/commit/defa7cb4d4ef0376ca4797aaac6209b4ed0e9971))
+
 ## [4.4.6](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.5...v4.4.6) (2020-09-24)
 
 
