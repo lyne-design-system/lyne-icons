@@ -1,3 +1,11 @@
+## [4.4.6](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.5...v4.4.6) (2020-09-24)
+
+
+### Bug Fixes
+
+* make sure all changes are committed ([5e0320a](https://github.com/lyne-design-system/lyne-icons/commit/5e0320acfc25e933d5da2733cccb36d939b443fb))
+* make sure all changes are committed [skip ci] ([f0f8345](https://github.com/lyne-design-system/lyne-icons/commit/f0f83450bded1c9250206a043ec382233d5f0f37))
+
 ## [4.4.5](https://github.com/lyne-design-system/lyne-icons/compare/v4.4.4...v4.4.5) (2020-09-24)
 
 
