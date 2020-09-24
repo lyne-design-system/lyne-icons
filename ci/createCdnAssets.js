@@ -91,8 +91,7 @@ const copyFiles = (source, destination) => {
     await copyFiles(distDir, cdnDir);
 
     // add all files, commit and push
-    await git.add(`${rootIconsFolder}/*`);
-    await git.add(`${cdnDir}/${config.iconsInfoFile}`);
+    await git.add(`${cdnDir}/*`);
     await git.add(`${distDir}/*`);
 
     await git.commit(`chore: add CDN assets for version ${version} [skip ci]`);
