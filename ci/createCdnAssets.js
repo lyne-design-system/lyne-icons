@@ -3,7 +3,6 @@ const shell = require('shelljs');
 const argv = require('minimist');
 const simpleGit = require('simple-git');
 const rimraf = require('rimraf');
-const getAllFiles = require('./deepGetFilesOfFolder');
 
 const {
   ncp
@@ -82,7 +81,6 @@ const copyFiles = (source, destination) => {
   writeVersionJsonFile(version);
 
   // delete icons folder in cdn folder
-  console.log('WILL DELETE ICONS FOLDER IN CDN DIR:', rootIconsFolder);
   rimraf.sync(rootIconsFolder);
 
   try {
@@ -92,12 +90,9 @@ const copyFiles = (source, destination) => {
     // copy files to cdn folder
     await copyFiles(distDir, cdnDir);
 
-    // commit and push files in cdn folder
-    const cdnFiles = getAllFiles(cdnDir);
-
-    await git.add(cdnFiles);
-
-    // simplest way in case we deleted something
+    // add all files, commit and push
+    await git.add(`${rootIconsFolder}/*`);
+    await git.add(`${cdnDir}/${config.iconsInfoFile}`);
     await git.add(`${distDir}/*`);
     await git.commit(`chore: add CDN assets for version ${version} [skip ci]`);
     await git.push('origin', 'master', {
