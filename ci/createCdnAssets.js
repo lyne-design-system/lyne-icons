@@ -52,7 +52,7 @@ const copyFiles = (source, destination) => {
   const distDir = `./${config.distFolder}`;
   const archiveDir = `${cdnDir}/${config.archiveFolder}`;
   const versionDir = `${archiveDir}/${version}`;
-  const rootIconsFolder = `${cdnDir}/${config.rootIconsFolder}`
+  const rootIconsFolder = `${cdnDir}/${config.rootIconsFolder}`;
 
   console.log(`-->> Generate CDN Assets: version ${version}`);
 
