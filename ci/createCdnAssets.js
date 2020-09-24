@@ -2,7 +2,9 @@ const fs = require('fs');
 const shell = require('shelljs');
 const argv = require('minimist');
 const simpleGit = require('simple-git');
+const rimraf = require('rimraf');
 const getAllFiles = require('./deepGetFilesOfFolder');
+
 const {
   ncp
 } = require('ncp');
@@ -16,6 +18,7 @@ const config = {
   archiveFolder: 'versions',
   cdnFolder: 'cdn',
   distFolder: 'dist',
+  iconsFolder: 'icons',
   iconsInfoFile: 'icons.json'
 };
 
@@ -49,6 +52,7 @@ const copyFiles = (source, destination) => {
   const distDir = `./${config.distFolder}`;
   const archiveDir = `${cdnDir}/${config.archiveFolder}`;
   const versionDir = `${archiveDir}/${version}`;
+  const rootIconsFolder = `${cdnDir}/${config.rootIconsFolder}`
 
   console.log(`-->> Generate CDN Assets: version ${version}`);
 
@@ -76,6 +80,9 @@ const copyFiles = (source, destination) => {
 
   // write new version icons.json
   writeVersionJsonFile(version);
+
+  // delete icons folder in cdn folder
+  rimraf.sync(rootIconsFolder);
 
   try {
     // copy files to archive version folder

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const rimraf = require('rimraf');
 
 module.exports = (iconData, config) => {
 
@@ -9,12 +10,14 @@ module.exports = (iconData, config) => {
     fs.mkdirSync(outputFolder);
   }
 
-  // make sure subFolder exists
+  // delete dist folder
+  rimraf.sync(outputFolder);
+
+  // create folders
   const subFolder = `${outputFolder}/${config.output.subfolder}`;
 
-  if (!fs.existsSync(subFolder)) {
-    fs.mkdirSync(subFolder);
-  }
+  fs.mkdirSync(outputFolder);
+  fs.mkdirSync(subFolder);
 
   // save icons
   iconData.icons.forEach((icon) => {
