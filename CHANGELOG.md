@@ -1,3 +1,10 @@
+## [4.7.4](https://github.com/lyne-design-system/lyne-icons/compare/v4.7.3...v4.7.4) (2020-09-28)
+
+
+### Bug Fixes
+
+* readding minus file (triggered from Figma) [skip ci] ([2bc1a7c](https://github.com/lyne-design-system/lyne-icons/commit/2bc1a7cfbe3b139430c6acebd8fd7123c8c89404))
+
 ## [4.7.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.7.2...v4.7.3) (2020-09-28)
 
 
