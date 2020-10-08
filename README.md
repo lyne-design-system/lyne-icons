@@ -4,7 +4,7 @@
 
 Automatically generate SVG Icons for the Lyne Design System based on the Figma Lyne Icon Library:
 - Lyne Design System: [https://github.com/lyne-design-system](https://github.com/lyne-design-system).
-- Lyne Figma Library [https://www.figma.com/file/mWknI2rC5DJmOgRO61WKai/LyneDesignSystemLibrary?node-id=2%3A2](https://www.figma.com/file/mWknI2rC5DJmOgRO61WKai/LyneDesignSystemLibrary?node-id=2%3A2)
+- Lyne Icons Figma file [https://www.figma.com/file/UQBd7cHKav0hr9oXYp7opJ/LyneDesignSystemIcons?node-id=0%3A12](https://www.figma.com/file/UQBd7cHKav0hr9oXYp7opJ/LyneDesignSystemIcons?node-id=0%3A1)
 
 ## Installation
 
