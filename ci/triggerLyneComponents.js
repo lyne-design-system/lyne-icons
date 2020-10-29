@@ -25,7 +25,7 @@ require('dotenv')
       branchName: 'master',
       message: `${commitMessage} (triggered from icons build)`,
       travisToken: process.env.TRAVIS_TOKEN,
-      travisUrl: 'https://api.travis-ci.org/repo/lyne-design-system%2Flyne-components/requests'
+      travisUrl: 'https://api.travis-ci.com/repo/lyne-design-system%2Flyne-components/requests'
     });
 
     shell.exit(0);
