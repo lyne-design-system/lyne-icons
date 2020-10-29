@@ -1,3 +1,12 @@
+## [4.9.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.9.0...v4.9.1) (2020-10-29)
+
+
+### Bug Fixes
+
+* enable travis config ([7379a07](https://github.com/lyne-design-system/lyne-icons/commit/7379a077f47a0e873380e90446719e1d671940a1))
+* enable travis config [skip ci] ([72c8070](https://github.com/lyne-design-system/lyne-icons/commit/72c8070084fcaebcc76cdb466c7b51d9ee8afa26))
+* use com instead of org for travis url ([4103041](https://github.com/lyne-design-system/lyne-icons/commit/4103041da3cefde800a2ed1d41268f8ebe81e946))
+
 # [4.9.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.8.0...v4.9.0) (2020-09-30)
 
 
