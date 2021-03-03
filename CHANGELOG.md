@@ -1,3 +1,26 @@
+## [4.10.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.10.0...v4.10.1) (2021-02-27)
+
+
+### Bug Fixes
+
+* revert test change (triggered from Figma) [skip ci] ([e2dc972](https://github.com/lyne-design-system/lyne-icons/commit/e2dc972549f1400623180e3fd01db69cc921ba98))
+
+# [4.10.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.9.1...v4.10.0) (2021-02-27)
+
+
+### Features
+
+* add test arrow icon (triggered from Figma) [skip ci] ([0149937](https://github.com/lyne-design-system/lyne-icons/commit/014993744c949da1dbd1eb7d0d49d854e7c9a3bf))
+
+## [4.9.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.9.0...v4.9.1) (2020-10-29)
+
+
+### Bug Fixes
+
+* enable travis config ([7379a07](https://github.com/lyne-design-system/lyne-icons/commit/7379a077f47a0e873380e90446719e1d671940a1))
+* enable travis config [skip ci] ([72c8070](https://github.com/lyne-design-system/lyne-icons/commit/72c8070084fcaebcc76cdb466c7b51d9ee8afa26))
+* use com instead of org for travis url ([4103041](https://github.com/lyne-design-system/lyne-icons/commit/4103041da3cefde800a2ed1d41268f8ebe81e946))
+
 # [4.9.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.8.0...v4.9.0) (2020-09-30)
 
 

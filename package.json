@@ -1,6 +1,6 @@
 {
   "name": "lyne-icons",
-  "version": "4.9.0",
+  "version": "4.10.1",
   "description": "Icons for the Lyne Design System",
   "main": "index.js",
   "dependencies": {
@@ -14,7 +14,7 @@
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
-    "axios": "~0.20.0",
+    "axios": "~0.21.1",
     "dotenv": "~8.2.0",
     "eslint": "^7.0.0",
     "eslint-plugin-yaml": "~0.3.0",
