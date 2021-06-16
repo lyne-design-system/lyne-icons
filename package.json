@@ -17,7 +17,7 @@
     "axios": "~0.21.1",
     "dotenv": "~10.0.0",
     "eslint": "^7.0.0",
-    "eslint-plugin-yaml": "~0.4.1",
+    "eslint-plugin-yaml": "~0.5.0",
     "husky": "^6.0.0",
     "lyne-helper-eslint-config": "~1.0.1",
     "lyne-helper-figma-api": "~1.1.3",
