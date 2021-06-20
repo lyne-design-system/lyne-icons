@@ -1,3 +1,12 @@
+## [4.10.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.10.1...v4.10.2) (2021-06-20)
+
+
+### Bug Fixes
+
+* make build fail if step fails ([8c30cb5](https://github.com/lyne-design-system/lyne-icons/commit/8c30cb594e269d3f7e1012336cfc7beca8a9976f))
+* make build fail if step fails [skip ci] ([642ad39](https://github.com/lyne-design-system/lyne-icons/commit/642ad39dec8c16a0a7ee0553d0215e3c6d85b94f))
+* manually update semantic-release ([6584bbf](https://github.com/lyne-design-system/lyne-icons/commit/6584bbf3ee0558bbc66d9ac3a55328b7509baadb))
+
 ## [4.10.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.10.0...v4.10.1) (2021-02-27)
 
 
