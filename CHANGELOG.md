@@ -1,3 +1,11 @@
+## [4.10.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.10.2...v4.10.3) (2021-06-28)
+
+
+### Bug Fixes
+
+* adopt to new file structure and variants ([67c4f79](https://github.com/lyne-design-system/lyne-icons/commit/67c4f79f1c093e711fb6c2f38a0191e4915ddbfc))
+* adopt to new file structure and variants [skip ci] ([6a2d6f8](https://github.com/lyne-design-system/lyne-icons/commit/6a2d6f87b69617d9bcdd903c5a294790d08c324b))
+
 ## [4.10.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.10.1...v4.10.2) (2021-06-20)
 
 
