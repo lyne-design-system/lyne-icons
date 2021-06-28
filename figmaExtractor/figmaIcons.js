@@ -1,6 +1,21 @@
 const axios = require('axios');
 
 /**
+ * Get size from icon variant name. We get "Size=small" from Figma...
+ */
+const getIconSizeFromVariant = (variantName) => {
+  const sizePrefix = 'Size=';
+
+  const variantNameSplit = variantName.split(sizePrefix);
+
+  if (variantNameSplit.length === 2) {
+    return variantNameSplit[1];
+  }
+
+  return false;
+};
+
+/**
  * Get id and name from each child
  */
 const getIconNamesAndIds = (frames) => {
@@ -8,7 +23,18 @@ const getIconNamesAndIds = (frames) => {
 
   frames.forEach((frame) => {
     frame.children.forEach((child) => {
-      icons[child.id] = child.name;
+      const iconName = child.name;
+
+      child.children.forEach((childrenChild) => {
+        const variantName = getIconSizeFromVariant(childrenChild.name);
+
+        if (variantName) {
+          const variantFullName = `${iconName}-${variantName}`;
+
+          icons[childrenChild.id] = variantFullName;
+        }
+      });
+
     });
   });
 
