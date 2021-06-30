@@ -16,24 +16,75 @@ const getIconSizeFromVariant = (variantName) => {
 };
 
 /**
+ * Checkf if string can be parsed as JSON
+ */
+
+const isValidJson = (str) => {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
+};
+
+/**
+ * Get figma description from component
+ */
+const getDescriptionForComponent = (componentId, allComponents) => {
+
+  const compInfo = allComponents[componentId];
+  const compDescription = compInfo.description;
+
+  if (compDescription.length === 0) {
+    return '';
+  }
+
+  const canBeParsed = isValidJson(compDescription);
+
+  if (canBeParsed) {
+    return JSON.parse(compDescription);
+  }
+
+  return '';
+};
+
+/**
  * Get id and name from each child
  */
-const getIconNamesAndIds = (frames) => {
-  const icons = {};
+const getIconNamesAndIds = (frames, pageName, ignorePattern, allComponents) => {
+  const icons = [];
 
   frames.forEach((frame) => {
+    const frameName = frame.name;
+
     frame.children.forEach((child) => {
       const iconName = child.name;
+      const shouldIgnore = iconName.indexOf(ignorePattern) === 0;
 
-      child.children.forEach((childrenChild) => {
-        const variantName = getIconSizeFromVariant(childrenChild.name);
+      if (!shouldIgnore) {
+        child.children.forEach((childrenChild) => {
+          const variantName = getIconSizeFromVariant(childrenChild.name);
+          const description = getDescriptionForComponent(childrenChild.id, allComponents);
 
-        if (variantName) {
-          const variantFullName = `${iconName}-${variantName}`;
+          if (variantName) {
+            const variantFullName = `${iconName}-${variantName}`;
 
-          icons[childrenChild.id] = variantFullName;
-        }
-      });
+            const childrenData = {
+              category: frameName,
+              description,
+              fullName: variantFullName,
+              id: childrenChild.id,
+              name: iconName,
+              type: pageName,
+              variant: variantName
+            };
+
+            icons.push(childrenData);
+          }
+        });
+      }
 
     });
   });
@@ -60,10 +111,9 @@ const getIconUrlRequests = (figmaConfig, icons) => {
   };
 
   const requests = [];
-  const keys = Object.keys(icons);
 
-  keys.forEach((key) => {
-    requestConfig.url = `https://api.figma.com/v1/images/${fileId}/?ids=${key}&format=svg`;
+  icons.forEach((icon) => {
+    requestConfig.url = `https://api.figma.com/v1/images/${fileId}/?ids=${icon.id}&format=svg`;
 
     requests.push(axios.request(requestConfig));
 
@@ -106,22 +156,15 @@ const getSVGUrls = (iconResponses) => {
 /**
  * Make an object for each icon with id, name and url
  */
-const getMergedIdsAndNames = (names, urls) => {
-  const mergedIconInfo = [];
-  const urlKeys = Object.keys(urls);
+const getMergedIdsAndNames = (icons, urls) => {
 
-  urlKeys.forEach((urlKey) => {
-    const name = names[urlKey];
-    const url = urls[urlKey];
+  icons.forEach((icon) => {
+    const url = urls[icon.id];
 
-    mergedIconInfo.push({
-      id: urlKey,
-      name,
-      url
-    });
+    icon.figmaUrl = url;
   });
 
-  return mergedIconInfo;
+  return icons;
 };
 
 /**
@@ -132,12 +175,9 @@ const getIconContentRequests = (iconsInfo) => {
 
   iconsInfo.forEach((info) => {
     const config = {
-      data: {
-        id: info.id,
-        name: info.name
-      },
+      data: info,
       method: 'GET',
-      url: info.url
+      url: info.figmaUrl
     };
 
     const request = axios.request(config);
@@ -158,33 +198,32 @@ const getSVGContent = (responses) => {
     const config = JSON.parse(response.config.data);
 
     content.push({
-      id: config.id,
-      name: config.name,
+      ...config,
       svg: response.data
     });
   });
 
-  return {
-    icons: content,
-    version: '0.0.0'
-  };
+  return content;
 };
 
-module.exports = async (frames, figmaConfig) => {
-  const icons = getIconNamesAndIds(frames);
+module.exports = async (frames, figmaConfig, pageName, ignorePattern, allComponents) => {
+  if (frames.length < 1) {
+    return [];
+  }
+
+  const icons = getIconNamesAndIds(frames, pageName, ignorePattern, allComponents);
   const urlRequests = getIconUrlRequests(figmaConfig, icons);
   const response = await Promise.all(urlRequests);
 
-  console.log('SVG INFO: fetched url\'s to download svg');
+  console.log(`SVG INFO: fetched url's to download svg for page: ${pageName}`);
 
   const iconUrls = getSVGUrls(response);
   const iconsInfo = getMergedIdsAndNames(icons, iconUrls);
   const iconsContentRequests = getIconContentRequests(iconsInfo);
   const svgResponses = await Promise.all(iconsContentRequests);
-
-  console.log('SVG INFO: fetched svg\'s contents');
-
   const svgContent = getSVGContent(svgResponses);
+
+  console.log(`SVG INFO: fetched svg's contents for page: ${pageName}`);
 
   return svgContent;
 };

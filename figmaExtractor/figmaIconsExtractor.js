@@ -8,13 +8,14 @@ require('dotenv')
 
 // general configuration
 const config = {
-  frameIgnorePattern: '***ignore***',
+  componentIgnorePattern: '_',
+  frameIgnorePattern: '_',
   output: {
     folder: 'dist',
     infoFile: 'icons',
     subfolder: 'icons'
   },
-  pagesIgnorePattern: '***ignore***'
+  pagesIgnorePattern: '_'
 };
 
 (async () => {
@@ -27,18 +28,33 @@ const config = {
     };
 
     const figmaDocument = await figma.document(apiConfig.file, apiConfig.token);
+
+    const figmaComponents = figmaDocument.components;
+
     const pages = figma.pages(figmaDocument, config.pagesIgnorePattern);
 
     if (!pages || pages.length < 1) {
       throw new Error('No relevant figma pages found.');
     }
 
-    const frames = figma.frames(pages[0], config.frameIgnorePattern);
-    const iconData = await figmaIcons(frames, apiConfig);
+    const iconData = {
+      icons: [],
+      version: '0.0.0'
+    };
+
+    for await (const page of pages) {
+      const frames = figma.frames(page, config.frameIgnorePattern);
+      const iconsOfFrame = await figmaIcons(frames, apiConfig, page.name, config.componentIgnorePattern, figmaComponents);
+
+      iconsOfFrame.forEach((icon) => {
+        iconData.icons.push(icon);
+      });
+    }
 
     writeSvgData(iconData, config);
 
     console.log('-->> FIGMA SVG FILES SAVED');
+
     shell.exit(0);
 
   } catch (error) {

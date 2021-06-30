@@ -21,7 +21,7 @@ module.exports = (iconData, config) => {
 
   // save icons
   iconData.icons.forEach((icon) => {
-    fs.writeFileSync(`${subFolder}/${icon.name}.svg`, icon.svg);
+    fs.writeFileSync(`${subFolder}/${icon.fullName}.svg`, icon.svg);
   });
 
   // save info file
