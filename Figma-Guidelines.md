@@ -46,3 +46,7 @@ It's a must to stick to these Guidlines when working on the Icon Library in Figm
 - remove fill attrs from svgs
 - reconstruct ignore pattern: leading underscore
 - description of component missing in api response
+
+# TODO: Figma
+
+- Make sure that `Size` is the only property on variants
