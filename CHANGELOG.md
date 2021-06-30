@@ -1,3 +1,10 @@
+# [4.11.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.10.3...v4.11.0) (2021-06-30)
+
+
+### Features
+
+* technically adopt new figma guidelines ([535b2d4](https://github.com/lyne-design-system/lyne-icons/commit/535b2d45d1f7a2a7ed177a4d0a6f8c93f82c810e))
+
 ## [4.10.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.10.2...v4.10.3) (2021-06-28)
 
 
