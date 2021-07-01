@@ -1,3 +1,10 @@
+# [4.12.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.11.0...v4.12.0) (2021-07-01)
+
+
+### Features
+
+* slim icons before saving ([1354109](https://github.com/lyne-design-system/lyne-icons/commit/1354109da8e86d5befe8adbe3824fe06a00869b8))
+
 # [4.11.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.10.3...v4.11.0) (2021-06-30)
 
 
