@@ -216,17 +216,40 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
 
   const icons = getIconNamesAndIds(frames, pageName, ignorePattern, allComponents);
   const urlRequests = getIconUrlRequests(figmaConfig, icons);
-  const response = await Promise.all(urlRequests);
+
+  const response = [];
+
+  for await (const request of urlRequests) {
+    const result = await request;
+
+    response.push(result);
+  }
 
   console.log(`SVG INFO: fetched url's to download svg for page: ${pageName}`);
 
   const iconUrls = getSVGUrls(response);
   const iconsInfo = getMergedIdsAndNames(icons, iconUrls);
   const iconsContentRequests = getIconContentRequests(iconsInfo);
-  const svgResponses = await Promise.all(iconsContentRequests);
+
+  const svgResponses = [];
+
+  /**
+   * !!Caution!!: using Promise.all() to execute all requests will lead to
+   * exceeding Figmas rate limit. so we slow it down by using a for await
+   * loop.
+   */
+
+  for await (const svgResponse of iconsContentRequests) {
+    const result = await svgResponse;
+
+    svgResponses.push(result);
+  }
+
   const svgContent = await getSVGContent(svgResponses);
 
   console.log(`SVG INFO: fetched svg's contents for page: ${pageName}`);
+
+  console.log(svgResponses);
 
   return svgContent;
 };
