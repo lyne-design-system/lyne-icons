@@ -249,7 +249,5 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
 
   console.log(`SVG INFO: fetched svg's contents for page: ${pageName}`);
 
-  console.log(svgResponses);
-
   return svgContent;
 };
