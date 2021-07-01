@@ -1,3 +1,11 @@
+## [4.12.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.0...v4.12.1) (2021-07-01)
+
+
+### Bug Fixes
+
+* don't use promise.all to not exceed figmas rate limit ([e8af520](https://github.com/lyne-design-system/lyne-icons/commit/e8af5204ecb39e839f246c3b3b70731bf7729800))
+* don't use promise.all to not exceed figmas rate limit [skip ci] ([5ea7e1c](https://github.com/lyne-design-system/lyne-icons/commit/5ea7e1c9c89e016b4f0bb14a5c13e1ab3980e3d5))
+
 # [4.12.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.11.0...v4.12.0) (2021-07-01)
 
 
