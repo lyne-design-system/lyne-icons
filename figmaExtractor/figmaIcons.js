@@ -1,4 +1,5 @@
 const axios = require('axios');
+const svgSlimming = require('svg-slimming');
 
 /**
  * Get size from icon variant name. We get "Size=small" from Figma...
@@ -191,17 +192,19 @@ const getIconContentRequests = (iconsInfo) => {
 /**
  * Make an object for each icon with id, name and svg-content
  */
-const getSVGContent = (responses) => {
+const getSVGContent = async (responses) => {
   const content = [];
 
-  responses.forEach((response) => {
+  for await (const response of responses) {
     const config = JSON.parse(response.config.data);
+    const rawSvgData = response.data;
+    const cleanSvg = await svgSlimming(rawSvgData);
 
     content.push({
       ...config,
-      svg: response.data
+      svg: cleanSvg
     });
-  });
+  }
 
   return content;
 };
@@ -221,7 +224,7 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
   const iconsInfo = getMergedIdsAndNames(icons, iconUrls);
   const iconsContentRequests = getIconContentRequests(iconsInfo);
   const svgResponses = await Promise.all(iconsContentRequests);
-  const svgContent = getSVGContent(svgResponses);
+  const svgContent = await getSVGContent(svgResponses);
 
   console.log(`SVG INFO: fetched svg's contents for page: ${pageName}`);
 
