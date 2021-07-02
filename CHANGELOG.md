@@ -1,3 +1,10 @@
+## [4.12.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.1...v4.12.2) (2021-07-02)
+
+
+### Bug Fixes
+
+* get icon download urls with onerequest to not run into rate limit issue, download icons in batches from aws not to run into rate limit issue ([220b5bb](https://github.com/lyne-design-system/lyne-icons/commit/220b5bb0e7aa3b5fb2fb36c0eb3f6d911abea512))
+
 ## [4.12.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.0...v4.12.1) (2021-07-01)
 
 
