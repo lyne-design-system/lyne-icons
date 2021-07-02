@@ -216,7 +216,7 @@ const getIconContents = async (iconsInfo) => {
 
     const result = await Promise.all(promises);
 
-    console.log(`Fetched batch ${batchCounter}.`);
+    console.log(`SVG INFO: Fetched batch ${batchCounter}.`);
 
     batchCounter++;
 
