@@ -33,6 +33,8 @@ const config = {
 
     const pages = figma.pages(figmaDocument, config.pagesIgnorePattern);
 
+    console.log('SVG INFO: fetched pages');
+
     if (!pages || pages.length < 1) {
       throw new Error('No relevant figma pages found.');
     }
