@@ -229,7 +229,7 @@ const getIconContents = async (iconsInfo) => {
 /**
  * Make an object for each icon with id, name and svg-content
  */
-const getSVGContent = async (responses) => {
+const extractSVGContent = async (responses) => {
   const content = [];
 
   for await (const response of responses) {
@@ -259,7 +259,7 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
   const iconsInfo = getMergedIdsAndNames(icons, iconsUrlsResponse.data.images);
 
   const svgResponses = await getIconContents(iconsInfo);
-  const svgContent = await getSVGContent(svgResponses);
+  const svgContent = await extractSVGContent(svgResponses);
 
   console.log(`SVG INFO: fetched svg's contents for page: ${pageName}`);
 
