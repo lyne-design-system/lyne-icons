@@ -19,7 +19,6 @@ const getIconSizeFromVariant = (variantName) => {
 /**
  * Checkf if string can be parsed as JSON
  */
-
 const isValidJson = (str) => {
   try {
     JSON.parse(str);
@@ -96,7 +95,13 @@ const getIconNamesAndIds = (frames, pageName, ignorePattern, allComponents) => {
 /**
  * Generate a request to the Figma api for each icon the get the svg-url
  */
-const getIconUrlRequests = (figmaConfig, icons) => {
+const getIconsUrls = async (figmaConfig, icons) => {
+  const iconIds = [];
+
+  icons.forEach((icon) => {
+    iconIds.push(icon.id);
+  });
+
   const {
     fileId,
     token
@@ -108,50 +113,13 @@ const getIconUrlRequests = (figmaConfig, icons) => {
 
   const requestConfig = {
     headers: requestHeaders,
-    method: 'GET'
+    method: 'GET',
+    url: `https://api.figma.com/v1/images/${fileId}/?ids=${iconIds.join(',')}&format=svg`
   };
 
-  const requests = [];
+  const result = await axios.request(requestConfig);
 
-  icons.forEach((icon) => {
-    requestConfig.url = `https://api.figma.com/v1/images/${fileId}/?ids=${icon.id}&format=svg`;
-
-    requests.push(axios.request(requestConfig));
-
-  });
-
-  return requests;
-};
-
-/**
- * Extract the image url from the Figma api response
- */
-const getSVGUrls = (iconResponses) => {
-  const urls = {};
-
-  iconResponses.forEach((response) => {
-    const item = response.data;
-
-    if (item.err !== null) {
-      console.log(`ERROR: ${item.err}`);
-
-      return;
-    }
-
-    const imagesKeys = Object.keys(item.images);
-
-    if (imagesKeys.length !== 1) {
-      console.log('ATTENTION: skip icon because there seem to be multiple images on aws related to that icon');
-
-      return;
-    }
-
-    const imageUrl = item.images[imagesKeys[0]];
-
-    urls[imagesKeys[0]] = imageUrl;
-  });
-
-  return urls;
+  return result;
 };
 
 /**
@@ -169,24 +137,93 @@ const getMergedIdsAndNames = (icons, urls) => {
 };
 
 /**
- * Make a request to AWS for each icon to get the content of the svg
+ * Get config for requests for downloading svgs from AWS
  */
-const getIconContentRequests = (iconsInfo) => {
-  const requests = [];
+const getIconContentsRequests = (iconsInfo) => {
+  const configs = [];
 
-  iconsInfo.forEach((info) => {
+  for (const info of iconsInfo) {
     const config = {
       data: info,
       method: 'GET',
       url: info.figmaUrl
     };
 
-    const request = axios.request(config);
+    configs.push(config);
+  }
 
-    requests.push(request);
-  });
+  return configs;
+};
 
-  return requests;
+/**
+ * Assuming we have more than 1000 icons, making concurrent request to aws
+ * for all icons, we pretty sure soon will hit a rate limit.
+ * We create batches of 100 requests, and execute those batches sequentially.
+ */
+const getRequestBatches = (requests) => {
+  const batches = [];
+  const batchSize = 100;
+  let batch = [];
+
+  console.log(`SVG INFO: fetch in batches of ${batchSize} svgs.`);
+
+  while (requests.length > 0) {
+    if (batch.length < batchSize) {
+      batch.push(requests[0]);
+
+      // this is the last iteration
+      if (requests.length === 1) {
+        batches.push(batch);
+      }
+    } else {
+      batches.push(batch);
+      batch = [requests[0]];
+    }
+
+    requests.shift();
+  }
+
+  console.log(`SVG INFO: ${batches.length} batches.`);
+
+  return batches;
+};
+
+/**
+ * Get all Icons as SVG
+ */
+const getIconContents = async (iconsInfo) => {
+  console.log(`SVG INFO: start fetching ${iconsInfo.length} svgs.`);
+
+  const requests = getIconContentsRequests(iconsInfo);
+  const requestBatches = getRequestBatches(requests);
+  let results = [];
+  let batchCounter = 1;
+
+  for await (const batch of requestBatches) {
+
+    /**
+     * We create the axios request objects here. If we would create the request
+     * objects already in the loop where we create the batches, we would start
+     * firing all the requests almost simultaniously and thus creating a
+     * connection abort from aws or similar api error.
+     */
+
+    const promises = [];
+
+    batch.forEach((batchItem) => {
+      promises.push(axios.request(batchItem));
+    });
+
+    const result = await Promise.all(promises);
+
+    console.log(`Fetched batch ${batchCounter}.`);
+
+    batchCounter++;
+
+    results = results.concat(result);
+  }
+
+  return results;
 };
 
 /**
@@ -215,36 +252,13 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
   }
 
   const icons = getIconNamesAndIds(frames, pageName, ignorePattern, allComponents);
-  const urlRequests = getIconUrlRequests(figmaConfig, icons);
+  const iconsUrlsResponse = await getIconsUrls(figmaConfig, icons);
 
-  const response = [];
+  console.log(`SVG INFO: fetched url's to download svgs for page: ${pageName}`);
 
-  for await (const request of urlRequests) {
-    const result = await request;
+  const iconsInfo = getMergedIdsAndNames(icons, iconsUrlsResponse.data.images);
 
-    response.push(result);
-  }
-
-  console.log(`SVG INFO: fetched url's to download svg for page: ${pageName}`);
-
-  const iconUrls = getSVGUrls(response);
-  const iconsInfo = getMergedIdsAndNames(icons, iconUrls);
-  const iconsContentRequests = getIconContentRequests(iconsInfo);
-
-  const svgResponses = [];
-
-  /**
-   * !!Caution!!: using Promise.all() to execute all requests will lead to
-   * exceeding Figmas rate limit. so we slow it down by using a for await
-   * loop.
-   */
-
-  for await (const svgResponse of iconsContentRequests) {
-    const result = await svgResponse;
-
-    svgResponses.push(result);
-  }
-
+  const svgResponses = await getIconContents(iconsInfo);
   const svgContent = await getSVGContent(svgResponses);
 
   console.log(`SVG INFO: fetched svg's contents for page: ${pageName}`);
