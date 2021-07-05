@@ -35,6 +35,7 @@ const isValidJson = (str) => {
 const getDescriptionForComponent = (componentId, allComponents) => {
 
   const compInfo = allComponents[componentId];
+
   const compDescription = compInfo.description;
 
   if (compDescription.length === 0) {
@@ -64,26 +65,44 @@ const getIconNamesAndIds = (frames, pageName, ignorePattern, allComponents) => {
       const shouldIgnore = iconName.indexOf(ignorePattern) === 0;
 
       if (!shouldIgnore) {
-        child.children.forEach((childrenChild) => {
-          const variantName = getIconSizeFromVariant(childrenChild.name);
-          const description = getDescriptionForComponent(childrenChild.id, allComponents);
 
-          if (variantName) {
-            const variantFullName = `${iconName}-${variantName}`;
+        /* if there is only one children, we have an icon with no variants */
+        if (child.children.length === 1) {
+          const description = getDescriptionForComponent(child.id, allComponents);
 
-            const childrenData = {
-              category: frameName,
-              description,
-              fullName: variantFullName,
-              id: childrenChild.id,
-              name: iconName,
-              type: pageName,
-              variant: variantName
-            };
+          const childrenData = {
+            category: frameName,
+            description,
+            fullName: iconName,
+            id: child.id,
+            name: iconName,
+            type: pageName,
+            variant: false
+          };
 
-            icons.push(childrenData);
-          }
-        });
+          icons.push(childrenData);
+        } else {
+          child.children.forEach((childrenChild) => {
+            const variantName = getIconSizeFromVariant(childrenChild.name);
+            const description = getDescriptionForComponent(childrenChild.id, allComponents);
+
+            if (variantName) {
+              const variantFullName = `${iconName}-${variantName}`;
+
+              const childrenData = {
+                category: frameName,
+                description,
+                fullName: variantFullName,
+                id: childrenChild.id,
+                name: iconName,
+                type: pageName,
+                variant: variantName
+              };
+
+              icons.push(childrenData);
+            }
+          });
+        }
       }
 
     });
