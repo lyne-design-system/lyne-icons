@@ -1,3 +1,10 @@
+## [4.12.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.2...v4.12.3) (2021-07-05)
+
+
+### Bug Fixes
+
+* fix croissant, sign-x, gps-disabled, arrow-change, car-profile (triggered from Figma) [skip ci] ([a48b412](https://github.com/lyne-design-system/lyne-icons/commit/a48b4124f4669626cefb1ca001cfbe9d9443459b))
+
 ## [4.12.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.1...v4.12.2) (2021-07-02)
 
 
