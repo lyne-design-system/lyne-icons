@@ -21,7 +21,11 @@ module.exports = (iconData, config) => {
 
   // save icons
   iconData.icons.forEach((icon) => {
-    fs.writeFileSync(`${subFolder}/${icon.fullName}.svg`, icon.svg);
+    try {
+      fs.writeFileSync(`${subFolder}/${icon.fullName}.svg`, icon.svg);
+    } catch (err) {
+      console.log('SVG INFO: error writing file', icon.fullName);
+    }
   });
 
   // save info file
