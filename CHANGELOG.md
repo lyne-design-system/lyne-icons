@@ -1,3 +1,10 @@
+## [4.12.6](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.5...v4.12.6) (2021-07-05)
+
+
+### Bug Fixes
+
+* fixed various icons glitches (triggered from Figma) [skip ci] ([3d159b0](https://github.com/lyne-design-system/lyne-icons/commit/3d159b0d449a8bb07a83544b56666d6765a6d69e))
+
 ## [4.12.5](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.4...v4.12.5) (2021-07-05)
 
 
