@@ -237,8 +237,8 @@ const extractSVGContent = async (responses) => {
     const rawSvgData = response.data;
     const slimConfig = {
       params: {
-        angelDigit: 5,
-        sizeDigit: 5
+        angelDigit: 6,
+        sizeDigit: 6
       }
     };
 
