@@ -1,5 +1,5 @@
 const axios = require('axios');
-const svgSlimming = require('svg-slimming');
+const svgSlimming = require('svg-slim');
 
 /**
  * Get size from icon variant name. We get "Size=small" from Figma...
@@ -235,7 +235,14 @@ const extractSVGContent = async (responses) => {
   for await (const response of responses) {
     const config = JSON.parse(response.config.data);
     const rawSvgData = response.data;
-    const cleanSvg = await svgSlimming(rawSvgData);
+    const slimConfig = {
+      params: {
+        angelDigit: 5,
+        sizeDigit: 5
+      }
+    };
+
+    const cleanSvg = await svgSlimming(rawSvgData, slimConfig);
 
     content.push({
       ...config,
