@@ -1,3 +1,10 @@
+## [4.12.10](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.9...v4.12.10) (2021-07-05)
+
+
+### Bug Fixes
+
+* glitch in bicycle (triggered from Figma) [skip ci] ([a641f79](https://github.com/lyne-design-system/lyne-icons/commit/a641f7950669f135b025efa2c76f00d3846ae4c5))
+
 ## [4.12.9](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.8...v4.12.9) (2021-07-05)
 
 
