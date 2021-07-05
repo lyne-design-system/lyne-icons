@@ -1,3 +1,12 @@
+## [4.12.14](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.13...v4.12.14) (2021-07-05)
+
+
+### Bug Fixes
+
+* explicitly define pages with icon variants and use it as condition ([7925110](https://github.com/lyne-design-system/lyne-icons/commit/7925110aa739a9e9584289b2f0caf55c4e0da709))
+* explicitly define pages with icon variants and use it as condition [skip ci] ([b4863cf](https://github.com/lyne-design-system/lyne-icons/commit/b4863cfd01c013e9504a2449fa491536d25425cf))
+* handle icons without variants as well ([f54f796](https://github.com/lyne-design-system/lyne-icons/commit/f54f796fddb07e83c2949b1ca61aa90de166e996))
+
 ## [4.12.13](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.12...v4.12.13) (2021-07-05)
 
 
