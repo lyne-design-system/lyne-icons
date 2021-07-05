@@ -1,6 +1,8 @@
 const axios = require('axios');
 const svgSlimming = require('svg-slim');
 
+const pagesWithVariantIcons = ['ui-icons'];
+
 /**
  * Get size from icon variant name. We get "Size=small" from Figma...
  */
@@ -67,7 +69,7 @@ const getIconNamesAndIds = (frames, pageName, ignorePattern, allComponents) => {
       if (!shouldIgnore) {
 
         /* if there is only one children, we have an icon with no variants */
-        if (child.children.length === 1) {
+        if (pagesWithVariantIcons.indexOf(pageName) === -1) {
           const description = getDescriptionForComponent(child.id, allComponents);
 
           const childrenData = {
@@ -210,8 +212,8 @@ const getRequestBatches = (requests) => {
 /**
  * Get all Icons as SVG
  */
-const getIconContents = async (iconsInfo) => {
-  console.log(`SVG INFO: start fetching ${iconsInfo.length} svgs.`);
+const getIconContents = async (iconsInfo, pageName) => {
+  console.log(`SVG INFO: start fetching ${iconsInfo.length} svgs for page ${pageName}.`);
 
   const requests = getIconContentsRequests(iconsInfo);
   const requestBatches = getRequestBatches(requests);
@@ -321,7 +323,7 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
 
   const iconsInfo = getMergedIdsAndNames(icons, iconsUrlsResponse.data.images);
 
-  const svgResponses = await getIconContents(iconsInfo);
+  const svgResponses = await getIconContents(iconsInfo, pageName);
   const svgContent = await extractSVGContent(svgResponses);
 
   console.log(`SVG INFO: fetched svg's contents for page: ${pageName}`);
