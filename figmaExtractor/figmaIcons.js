@@ -248,9 +248,43 @@ const extractSVGContent = async (responses) => {
       ...config,
       svg: cleanSvg
     });
+
   }
 
   return content;
+};
+
+const checkForDuplicates = (icons) => {
+
+  const valueArr = icons.map((item) => item.fullName);
+
+  valueArr.forEach((value) => {
+    let counter = 0;
+
+    valueArr.forEach((innerLoopValue) => {
+      if (value === innerLoopValue) {
+        counter++;
+      }
+
+    });
+
+    if (counter > 1) {
+      console.log('========');
+      console.log(`SVG INFO: error. The name ${value} was used more than once. Please fix this in Figma.`);
+
+      icons.forEach((icon) => {
+        if (icon.fullName === value) {
+          console.log(`type: ${icon.type}`);
+          console.log(`category: ${icon.category}`);
+          console.log(`name: ${icon.name}`);
+          console.log(`fullName: ${icon.fullName}`);
+        }
+      });
+      console.log('========');
+
+    }
+  });
+
 };
 
 module.exports = async (frames, figmaConfig, pageName, ignorePattern, allComponents) => {
@@ -259,6 +293,9 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
   }
 
   const icons = getIconNamesAndIds(frames, pageName, ignorePattern, allComponents);
+
+  checkForDuplicates(icons);
+
   const iconsUrlsResponse = await getIconsUrls(figmaConfig, icons);
 
   console.log(`SVG INFO: fetched url's to download svgs for page: ${pageName}`);
