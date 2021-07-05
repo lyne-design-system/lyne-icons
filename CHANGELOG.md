@@ -1,3 +1,11 @@
+## [4.12.5](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.4...v4.12.5) (2021-07-05)
+
+
+### Bug Fixes
+
+* limit digits to 5 to fix glitches in some icons ([14bf086](https://github.com/lyne-design-system/lyne-icons/commit/14bf0864f787e2b01ad960ab369e207a953f8fdd))
+* limit digits to 5 to fix glitches in some icons [skip ci] ([5d635c5](https://github.com/lyne-design-system/lyne-icons/commit/5d635c5b0f66466ec074e01ab3f986e0c9111b64))
+
 ## [4.12.4](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.3...v4.12.4) (2021-07-05)
 
 
