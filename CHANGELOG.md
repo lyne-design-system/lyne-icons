@@ -1,3 +1,11 @@
+## [4.12.9](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.8...v4.12.9) (2021-07-05)
+
+
+### Bug Fixes
+
+* increase digit percision to 6 ([b3ca627](https://github.com/lyne-design-system/lyne-icons/commit/b3ca627f4bfaa42b5e55a42ee2dbddd1db0dd88b))
+* increase digit percision to 6 [skip ci] ([60d88fb](https://github.com/lyne-design-system/lyne-icons/commit/60d88fba61bf2c5eb83b4ec390a1f0191113fed0))
+
 ## [4.12.8](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.7...v4.12.8) (2021-07-05)
 
 
