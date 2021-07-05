@@ -213,7 +213,7 @@ const getRequestBatches = (requests) => {
  * Get all Icons as SVG
  */
 const getIconContents = async (iconsInfo, pageName) => {
-  console.log(`SVG INFO: start fetching ${iconsInfo.length} svgs for page ${pageName}.`);
+  console.log(`SVG INFO: start fetching ${iconsInfo.length} svgs for page: ${pageName}.`);
 
   const requests = getIconContentsRequests(iconsInfo);
   const requestBatches = getRequestBatches(requests);
