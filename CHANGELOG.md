@@ -1,3 +1,13 @@
+## [4.14.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.14.0...v4.14.1) (2021-07-21)
+
+
+### Bug Fixes
+
+* make sure to use ignore pattern ([18bb31e](https://github.com/lyne-design-system/lyne-icons/commit/18bb31eff78998a45a7e0b560e5a99cac931cffe))
+* remove commented code ([392b30e](https://github.com/lyne-design-system/lyne-icons/commit/392b30e80d97e9ea7beb001cdfc345e511d01683))
+* remove commented code [skip ci] ([6104de1](https://github.com/lyne-design-system/lyne-icons/commit/6104de1c07dbb97a3327cbdfd09c4d3d07b117b3))
+* request icon svg urls requests in batches ([452c31c](https://github.com/lyne-design-system/lyne-icons/commit/452c31cb8faee3ee85047ed1adf590f46388b3ff))
+
 # [4.14.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.13.0...v4.14.0) (2021-07-21)
 
 
