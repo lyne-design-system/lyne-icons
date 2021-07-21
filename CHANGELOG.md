@@ -1,3 +1,11 @@
+# [4.14.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.13.0...v4.14.0) (2021-07-21)
+
+
+### Features
+
+* grab components recursivly in any level of hierarchy, parse all allowed variants and description keys ([de81431](https://github.com/lyne-design-system/lyne-icons/commit/de81431bcf95664ce9621a6c059a2aa8ab0bc1a8))
+* grab components recursivly in any level of hierarchy, parse all allowed variants and description keys [skip ci] ([789c442](https://github.com/lyne-design-system/lyne-icons/commit/789c442884ad0ff22a95c6d1a03b9a6de20db1ee))
+
 # [4.13.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.12.14...v4.13.0) (2021-07-05)
 
 
