@@ -262,28 +262,6 @@ const getIconsUrls = async (figmaConfig, icons, pageName) => {
 
   return results;
 
-
-
-  /*
-  const {
-    fileId,
-    token
-  } = figmaConfig;
-
-  const requestHeaders = {
-    'X-Figma-Token': token
-  };
-
-  const requestConfig = {
-    headers: requestHeaders,
-    method: 'GET',
-    url: `https://api.figma.com/v1/images/${fileId}/?ids=${iconIds.join(',')}&format=svg`
-  };
-
-  const result = await axios.request(requestConfig);
-
-  return result;
-  */
 };
 
 /**
