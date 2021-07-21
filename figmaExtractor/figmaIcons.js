@@ -104,7 +104,7 @@ const getFullNameForVariant = (componentName, variants) => {
   return fullName;
 };
 
-const getComponentsFromFrame = (item, frameName, pageName, allComponents, _components, _currentComponentName) => {
+const getComponentsFromFrame = (item, frameName, pageName, allComponents, _components, _currentComponentName, ignorePattern) => {
   const keyChildren = 'children';
   const keyType = 'type';
   const valueTypeComponent = 'COMPONENT';
@@ -124,22 +124,24 @@ const getComponentsFromFrame = (item, frameName, pageName, allComponents, _compo
       currentComponentName = item.name;
     }
 
-    const variantsFromComponent = getVariantsFromComponent(item.name);
+    if (!item.name.indexOf(ignorePattern) === 0) {
+      const variantsFromComponent = getVariantsFromComponent(item.name);
 
-    const iconFullName = getFullNameForVariant(currentComponentName, variantsFromComponent);
-    const iconDescription = getDescriptionForComponent(item.id, allComponents);
+      const iconFullName = getFullNameForVariant(currentComponentName, variantsFromComponent);
+      const iconDescription = getDescriptionForComponent(item.id, allComponents);
 
-    components.push({
-      category: frameName,
-      fullName: iconFullName,
-      id: item.id,
-      name: currentComponentName,
-      properties: iconDescription,
-      type: pageName,
-      variants: variantsFromComponent
-    });
+      components.push({
+        category: frameName,
+        fullName: iconFullName,
+        id: item.id,
+        name: currentComponentName,
+        properties: iconDescription,
+        type: pageName,
+        variants: variantsFromComponent
+      });
 
-    currentComponentName = '';
+      currentComponentName = '';
+    }
   }
 
   // we have children
@@ -147,13 +149,15 @@ const getComponentsFromFrame = (item, frameName, pageName, allComponents, _compo
     .indexOf(keyChildren) !== -1;
 
   if (frameHasChildren) {
-    currentComponentName += currentComponentName.length === 0
-      ? item.name
-      : `-${item.name}`;
+    if (!item.name.indexOf(ignorePattern) === 0) {
+      currentComponentName += currentComponentName.length === 0
+        ? item.name
+        : `-${item.name}`;
 
-    item[keyChildren].forEach((child) => {
-      getComponentsFromFrame(child, frameName, pageName, allComponents, components, currentComponentName);
-    });
+      item[keyChildren].forEach((child) => {
+        getComponentsFromFrame(child, frameName, pageName, allComponents, components, currentComponentName, ignorePattern);
+      });
+    }
   }
 
   return components;
@@ -169,7 +173,7 @@ const getIconNamesAndIds = (frames, pageName, ignorePattern, allComponents) => {
     const frameName = frame.name;
 
     frame.children.forEach((child) => {
-      const iconsFromFrameChild = getComponentsFromFrame(child, frameName, pageName, allComponents);
+      const iconsFromFrameChild = getComponentsFromFrame(child, frameName, pageName, allComponents, ignorePattern);
 
       icons = icons.concat(iconsFromFrameChild);
 
