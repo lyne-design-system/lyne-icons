@@ -104,7 +104,7 @@ const getFullNameForVariant = (componentName, variants) => {
   return fullName;
 };
 
-const getComponentsFromFrame = (item, frameName, pageName, allComponents, _components, _currentComponentName, ignorePattern) => {
+const getComponentsFromFrame = (item, frameName, pageName, allComponents, ignorePattern, _components, _currentComponentName) => {
   const keyChildren = 'children';
   const keyType = 'type';
   const valueTypeComponent = 'COMPONENT';
@@ -114,17 +114,18 @@ const getComponentsFromFrame = (item, frameName, pageName, allComponents, _compo
   // the current item is a component
   const typeIsComponent = item[keyType] === valueTypeComponent;
 
-  if (typeIsComponent) {
+  if (item.name.indexOf(ignorePattern) !== 0) {
 
-    /**
-     * if we're on first iteration and already found a component,
-     * we need to get the name from it
-     */
-    if (currentComponentName.length === 0) {
-      currentComponentName = item.name;
-    }
+    if (typeIsComponent) {
 
-    if (!item.name.indexOf(ignorePattern) === 0) {
+      /**
+       * if we're on first iteration and already found a component,
+       * we need to get the name from it
+       */
+      if (currentComponentName.length === 0) {
+        currentComponentName = item.name;
+      }
+
       const variantsFromComponent = getVariantsFromComponent(item.name);
 
       const iconFullName = getFullNameForVariant(currentComponentName, variantsFromComponent);
@@ -141,23 +142,23 @@ const getComponentsFromFrame = (item, frameName, pageName, allComponents, _compo
       });
 
       currentComponentName = '';
+
     }
-  }
 
-  // we have children
-  const frameHasChildren = Object.keys(item)
-    .indexOf(keyChildren) !== -1;
+    // we have children
+    const frameHasChildren = Object.keys(item)
+      .indexOf(keyChildren) !== -1;
 
-  if (frameHasChildren) {
-    if (!item.name.indexOf(ignorePattern) === 0) {
+    if (frameHasChildren) {
       currentComponentName += currentComponentName.length === 0
         ? item.name
         : `-${item.name}`;
 
       item[keyChildren].forEach((child) => {
-        getComponentsFromFrame(child, frameName, pageName, allComponents, components, currentComponentName, ignorePattern);
+        getComponentsFromFrame(child, frameName, pageName, allComponents, ignorePattern, components, currentComponentName);
       });
     }
+
   }
 
   return components;
@@ -183,16 +184,87 @@ const getIconNamesAndIds = (frames, pageName, ignorePattern, allComponents) => {
   return icons;
 };
 
+const getBatchRequestForIds = (ids, figmaConfig) => {
+  const {
+    fileId,
+    token
+  } = figmaConfig;
+
+  const requestHeaders = {
+    'X-Figma-Token': token
+  };
+
+  const requestConfig = {
+    headers: requestHeaders,
+    method: 'GET',
+    url: `https://api.figma.com/v1/images/${fileId}/?ids=${ids.join(',')}&format=svg`
+  };
+
+  return requestConfig;
+};
+
+const getIconsUrlsRequestBatches = (ids, figmaConfig) => {
+  const batches = [];
+  const batchSize = 200;
+  let batch = [];
+
+  console.log(`SVG INFO: fetch svg url's in batches of ${batchSize} ids.`);
+
+  while (ids.length > 0) {
+    if (batch.length < batchSize) {
+      batch.push(ids[0]);
+
+      // this is the last iteration
+      if (ids.length === 1) {
+        batches.push(getBatchRequestForIds(batch, figmaConfig));
+      }
+    } else {
+      batches.push(getBatchRequestForIds(batch, figmaConfig));
+      batch = [ids[0]];
+    }
+
+    ids.shift();
+  }
+
+  console.log(`SVG INFO: ${batches.length} svg url batches.`);
+
+  return batches;
+};
+
 /**
  * Generate a request to the Figma api for each icon the get the svg-url
  */
-const getIconsUrls = async (figmaConfig, icons) => {
+const getIconsUrls = async (figmaConfig, icons, pageName) => {
+  console.log(`SVG INFO: start fetching ${icons.length} svg urls for page: ${pageName}.`);
+
   const iconIds = [];
 
   icons.forEach((icon) => {
     iconIds.push(icon.id);
   });
 
+  const requestBatches = getIconsUrlsRequestBatches(iconIds, figmaConfig);
+  const results = {};
+  let batchCounter = 1;
+
+  for await (const batch of requestBatches) {
+    const result = await axios.request(batch);
+
+    console.log(`SVG INFO: Fetched batch ${batchCounter}.`);
+
+    batchCounter++;
+
+    Object.keys(result.data.images)
+      .forEach((key) => {
+        results[key] = result.data.images[key];
+      });
+  }
+
+  return results;
+
+
+
+  /*
   const {
     fileId,
     token
@@ -211,6 +283,7 @@ const getIconsUrls = async (figmaConfig, icons) => {
   const result = await axios.request(requestConfig);
 
   return result;
+  */
 };
 
 /**
@@ -247,8 +320,8 @@ const getIconContentsRequests = (iconsInfo) => {
 };
 
 /**
- * Assuming we have more than 1000 icons, making concurrent request to aws
- * for all icons, we pretty sure soon will hit a rate limit.
+ * Assuming we have more than 1000 icons, making concurrent request to
+ * aws for all icons, we pretty sure soon will hit a rate limit.
  * We create batches of 100 requests, and execute those batches sequentially.
  */
 const getRequestBatches = (requests) => {
@@ -389,11 +462,11 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
 
   checkForDuplicates(icons);
 
-  const iconsUrlsResponse = await getIconsUrls(figmaConfig, icons);
+  const iconsUrlsResponse = await getIconsUrls(figmaConfig, icons, pageName);
 
   console.log(`SVG INFO: fetched url's to download svgs for page: ${pageName}`);
 
-  const iconsInfo = getMergedIdsAndNames(icons, iconsUrlsResponse.data.images);
+  const iconsInfo = getMergedIdsAndNames(icons, iconsUrlsResponse);
 
   const svgResponses = await getIconContents(iconsInfo, pageName);
   const svgContent = await extractSVGContent(svgResponses);
