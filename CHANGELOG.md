@@ -1,3 +1,10 @@
+## [4.14.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.14.2...v4.14.3) (2021-07-21)
+
+
+### Bug Fixes
+
+* test workflow (triggered from Figma) [skip ci] ([d20671e](https://github.com/lyne-design-system/lyne-icons/commit/d20671e469784b71ff04b54716bbec1b018fc6ae))
+
 ## [4.14.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.14.1...v4.14.2) (2021-07-21)
 
 
