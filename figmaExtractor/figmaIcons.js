@@ -1,22 +1,18 @@
 const axios = require('axios');
 const svgSlimming = require('svg-slim');
 
-const pagesWithVariantIcons = ['ui-icons'];
-
-/**
- * Get size from icon variant name. We get "Size=small" from Figma...
- */
-const getIconSizeFromVariant = (variantName) => {
-  const sizePrefix = 'Size=';
-
-  const variantNameSplit = variantName.split(sizePrefix);
-
-  if (variantNameSplit.length === 2) {
-    return variantNameSplit[1];
-  }
-
-  return false;
-};
+const allowedVariants = [
+  'Language',
+  'Size',
+  'Direction',
+  'Color',
+  'Value'
+];
+const allowedDescriptionKeys = [
+  'color',
+  'keywords',
+  'scalable'
+];
 
 /**
  * Checkf if string can be parsed as JSON
@@ -37,75 +33,145 @@ const isValidJson = (str) => {
 const getDescriptionForComponent = (componentId, allComponents) => {
 
   const compInfo = allComponents[componentId];
+  const properties = {};
 
   const compDescription = compInfo.description;
 
   if (compDescription.length === 0) {
-    return '';
+    return properties;
   }
 
   const canBeParsed = isValidJson(compDescription);
 
-  if (canBeParsed) {
-    return JSON.parse(compDescription);
+  if (!canBeParsed) {
+    return properties;
   }
 
-  return '';
+  const parsedDescription = JSON.parse(compDescription);
+
+  Object.keys(parsedDescription)
+    .forEach((key) => {
+      if (allowedDescriptionKeys.indexOf(key) !== -1) {
+        properties[key] = parsedDescription[key];
+      }
+    });
+
+  return properties;
+};
+
+const getVariantsFromComponent = (componentName) => {
+  // first check for comma separated values
+  const separated = componentName.split(',');
+
+  const variants = {};
+
+  separated.forEach((variant) => {
+    const cleanVariant = variant.trim();
+
+    allowedVariants.forEach((allowedVariant) => {
+      const variantSplit = cleanVariant.split(`${allowedVariant}=`);
+
+      if (variantSplit.length === 2) {
+        const variantValue = variantSplit[1].toLowerCase();
+        const variantKey = allowedVariant.toLowerCase();
+
+        variants[variantKey] = variantValue;
+      }
+    });
+  });
+
+  return variants;
+
+};
+
+const getFullNameForVariant = (componentName, variants) => {
+  const cleanName = componentName.toLowerCase();
+
+  if (!variants) {
+    return cleanName;
+  }
+
+  let fullName = cleanName;
+
+  Object.keys(variants)
+    .forEach((key) => {
+
+      const value = variants[key];
+
+      fullName += `-${value}`;
+    });
+
+  return fullName;
+};
+
+const getComponentsFromFrame = (item, frameName, pageName, allComponents, _components, _currentComponentName) => {
+  const keyChildren = 'children';
+  const keyType = 'type';
+  const valueTypeComponent = 'COMPONENT';
+  const components = _components || [];
+  let currentComponentName = _currentComponentName || '';
+
+  // the current item is a component
+  const typeIsComponent = item[keyType] === valueTypeComponent;
+
+  if (typeIsComponent) {
+
+    /**
+     * if we're on first iteration and already found a component,
+     * we need to get the name from it
+     */
+    if (currentComponentName.length === 0) {
+      currentComponentName = item.name;
+    }
+
+    const variantsFromComponent = getVariantsFromComponent(item.name);
+
+    const iconFullName = getFullNameForVariant(currentComponentName, variantsFromComponent);
+    const iconDescription = getDescriptionForComponent(item.id, allComponents);
+
+    components.push({
+      category: frameName,
+      fullName: iconFullName,
+      id: item.id,
+      name: currentComponentName,
+      properties: iconDescription,
+      type: pageName,
+      variants: variantsFromComponent
+    });
+
+    currentComponentName = '';
+  }
+
+  // we have children
+  const frameHasChildren = Object.keys(item)
+    .indexOf(keyChildren) !== -1;
+
+  if (frameHasChildren) {
+    currentComponentName += currentComponentName.length === 0
+      ? item.name
+      : `-${item.name}`;
+
+    item[keyChildren].forEach((child) => {
+      getComponentsFromFrame(child, frameName, pageName, allComponents, components, currentComponentName);
+    });
+  }
+
+  return components;
 };
 
 /**
  * Get id and name from each child
  */
 const getIconNamesAndIds = (frames, pageName, ignorePattern, allComponents) => {
-  const icons = [];
+  let icons = [];
 
   frames.forEach((frame) => {
     const frameName = frame.name;
 
     frame.children.forEach((child) => {
-      const iconName = child.name;
-      const shouldIgnore = iconName.indexOf(ignorePattern) === 0;
+      const iconsFromFrameChild = getComponentsFromFrame(child, frameName, pageName, allComponents);
 
-      if (!shouldIgnore) {
-
-        /* if there is only one children, we have an icon with no variants */
-        if (pagesWithVariantIcons.indexOf(pageName) === -1) {
-          const description = getDescriptionForComponent(child.id, allComponents);
-
-          const childrenData = {
-            category: frameName,
-            description,
-            fullName: iconName,
-            id: child.id,
-            name: iconName,
-            type: pageName,
-            variant: false
-          };
-
-          icons.push(childrenData);
-        } else {
-          child.children.forEach((childrenChild) => {
-            const variantName = getIconSizeFromVariant(childrenChild.name);
-            const description = getDescriptionForComponent(childrenChild.id, allComponents);
-
-            if (variantName) {
-              const variantFullName = `${iconName}-${variantName}`;
-
-              const childrenData = {
-                category: frameName,
-                description,
-                fullName: variantFullName,
-                id: childrenChild.id,
-                name: iconName,
-                type: pageName,
-                variant: variantName
-              };
-
-              icons.push(childrenData);
-            }
-          });
-        }
-      }
+      icons = icons.concat(iconsFromFrameChild);
 
     });
   });
@@ -310,6 +376,8 @@ const checkForDuplicates = (icons) => {
 
 module.exports = async (frames, figmaConfig, pageName, ignorePattern, allComponents) => {
   if (frames.length < 1) {
+    console.log(`SVG INFO: no frames on page ${pageName}, will return`);
+
     return [];
   }
 
