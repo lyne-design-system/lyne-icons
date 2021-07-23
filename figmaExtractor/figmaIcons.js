@@ -59,10 +59,11 @@ const getDescriptionForComponent = (componentId, allComponents) => {
   return properties;
 };
 
+/**
+ * Get object with variants from component name
+ */
 const getVariantsFromComponent = (componentName) => {
-  // first check for comma separated values
   const separated = componentName.split(',');
-
   const variants = {};
 
   separated.forEach((variant) => {
@@ -84,6 +85,9 @@ const getVariantsFromComponent = (componentName) => {
 
 };
 
+/**
+ * Construct fullName consisting out of component name and variant properties
+ */
 const getFullNameForVariant = (componentName, variants) => {
   const cleanName = componentName.toLowerCase();
 
@@ -104,6 +108,9 @@ const getFullNameForVariant = (componentName, variants) => {
   return fullName;
 };
 
+/**
+ * Recursively dive into frame children and get components
+ */
 const getComponentsFromFrame = (item, frameName, pageName, allComponents, ignorePattern, _components, _currentComponentName) => {
   const keyChildren = 'children';
   const keyType = 'type';
@@ -184,6 +191,9 @@ const getIconNamesAndIds = (frames, pageName, ignorePattern, allComponents) => {
   return icons;
 };
 
+/**
+ * Get request object for icon id's
+ */
 const getBatchRequestForIds = (ids, figmaConfig) => {
   const {
     fileId,
@@ -203,6 +213,9 @@ const getBatchRequestForIds = (ids, figmaConfig) => {
   return requestConfig;
 };
 
+/**
+ * Create batches of requests for icons url's
+ */
 const getIconsUrlsRequestBatches = (ids, figmaConfig) => {
   const batches = [];
   const batchSize = 200;
@@ -232,7 +245,7 @@ const getIconsUrlsRequestBatches = (ids, figmaConfig) => {
 };
 
 /**
- * Generate a request to the Figma api for each icon the get the svg-url
+ * Execute batches of requests for icons url's
  */
 const getIconsUrls = async (figmaConfig, icons, pageName) => {
   console.log(`SVG INFO: start fetching ${icons.length} svg urls for page: ${pageName}.`);
@@ -265,9 +278,9 @@ const getIconsUrls = async (figmaConfig, icons, pageName) => {
 };
 
 /**
- * Make an object for each icon with id, name and url
+ * Add figma's icon download url to icons objects
  */
-const getMergedIdsAndNames = (icons, urls) => {
+const addFigmaDownloadUrls = (icons, urls) => {
 
   icons.forEach((icon) => {
     const url = urls[icon.id];
@@ -396,6 +409,9 @@ const extractSVGContent = async (responses) => {
   return content;
 };
 
+/**
+ * Check icons for icons with duplicate names
+ */
 const checkForDuplicates = (icons) => {
 
   const valueArr = icons.map((item) => item.fullName);
@@ -444,7 +460,7 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
 
   console.log(`SVG INFO: fetched url's to download svgs for page: ${pageName}`);
 
-  const iconsInfo = getMergedIdsAndNames(icons, iconsUrlsResponse);
+  const iconsInfo = addFigmaDownloadUrls(icons, iconsUrlsResponse);
 
   const svgResponses = await getIconContents(iconsInfo, pageName);
   const svgContent = await extractSVGContent(svgResponses);
