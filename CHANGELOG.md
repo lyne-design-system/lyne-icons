@@ -1,3 +1,10 @@
+# [4.15.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.14.3...v4.15.0) (2021-07-26)
+
+
+### Features
+
+* enabling more piktograms (triggered from Figma) [skip ci] ([d4e833d](https://github.com/lyne-design-system/lyne-icons/commit/d4e833d02699cd7b20c2599267a6c63498bbd0c5))
+
 ## [4.14.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.14.2...v4.14.3) (2021-07-21)
 
 
