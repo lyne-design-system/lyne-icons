@@ -1,3 +1,10 @@
+## [4.15.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.1...v4.15.2) (2021-07-28)
+
+
+### Bug Fixes
+
+* enable all icons again (triggered from Figma) [skip ci] ([0d81020](https://github.com/lyne-design-system/lyne-icons/commit/0d81020e062fd1306362f9d6f3fd68fab74bcebf))
+
 ## [4.15.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.0...v4.15.1) (2021-07-26)
 
 
