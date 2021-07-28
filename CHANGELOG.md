@@ -1,3 +1,10 @@
+## [4.15.4](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.3...v4.15.4) (2021-07-28)
+
+
+### Bug Fixes
+
+* fix component names (triggered from Figma) [skip ci] ([db55f0f](https://github.com/lyne-design-system/lyne-icons/commit/db55f0f25dbdbb9a8ebbe096dab8d99765b652ff))
+
 ## [4.15.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.2...v4.15.3) (2021-07-28)
 
 
