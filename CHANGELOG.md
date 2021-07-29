@@ -1,3 +1,11 @@
+## [4.15.8](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.7...v4.15.8) (2021-07-29)
+
+
+### Bug Fixes
+
+* fake commit to trigger release ([869fd28](https://github.com/lyne-design-system/lyne-icons/commit/869fd28a2fa94558f69461ce25f32f369009935e))
+* test 2 icon description (triggered from Figma) [skip ci] ([12d2302](https://github.com/lyne-design-system/lyne-icons/commit/12d23029e30411123430a430d1ce45d2cc576713))
+
 ## [4.15.7](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.6...v4.15.7) (2021-07-29)
 
 
