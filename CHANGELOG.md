@@ -1,3 +1,10 @@
+## [4.15.6](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.5...v4.15.6) (2021-07-29)
+
+
+### Bug Fixes
+
+* add keywords and meta-description in ui-icons (triggered from Figma) [skip ci] ([5456c1a](https://github.com/lyne-design-system/lyne-icons/commit/5456c1ada5297dc388aa77217f7d761af09d1929))
+
 ## [4.15.5](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.4...v4.15.5) (2021-07-28)
 
 
