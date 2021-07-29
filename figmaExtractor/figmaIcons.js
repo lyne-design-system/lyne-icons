@@ -8,6 +8,7 @@ const allowedVariants = [
   'Color',
   'Value'
 ];
+
 const allowedDescriptionKeys = [
   'color',
   'keywords',
