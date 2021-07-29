@@ -1,3 +1,10 @@
+## [4.15.13](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.12...v4.15.13) (2021-07-29)
+
+
+### Bug Fixes
+
+* fix description object for all kom-icons (triggered from Figma) [skip ci] ([490a018](https://github.com/lyne-design-system/lyne-icons/commit/490a01879e5b11ad40059e9082a5233c6ec0d157))
+
 ## [4.15.12](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.11...v4.15.12) (2021-07-29)
 
 
