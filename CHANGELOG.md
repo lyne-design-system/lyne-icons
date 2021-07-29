@@ -1,3 +1,11 @@
+## [4.15.11](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.10...v4.15.11) (2021-07-29)
+
+
+### Bug Fixes
+
+* make sure that frames with mixed variant/no-variant components get correct names ([3e2d92d](https://github.com/lyne-design-system/lyne-icons/commit/3e2d92d774c1ceaa20bd502e24d4d61848bf3b43))
+* remove debug return and log ([befb4e2](https://github.com/lyne-design-system/lyne-icons/commit/befb4e2c86c593d9e83ac0b822f32488e67fb9e9))
+
 ## [4.15.10](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.9...v4.15.10) (2021-07-29)
 
 
