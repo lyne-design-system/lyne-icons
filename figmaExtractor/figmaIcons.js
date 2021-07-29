@@ -466,8 +466,6 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
   }
 
   const icons = getIconNamesAndIds(frames, pageName, ignorePattern, allComponents);
-  console.log(icons);
-  return [];
 
   checkForDuplicates(icons);
 
