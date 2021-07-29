@@ -90,13 +90,11 @@ const getVariantsFromComponent = (componentName) => {
  * Construct fullName consisting out of component name and variant properties
  */
 const getFullNameForVariant = (componentName, variants) => {
-  const cleanName = componentName.toLowerCase();
-
-  if (!variants) {
-    return cleanName;
+  if (!variants || Object.keys(variants).length === 0) {
+    return componentName;
   }
 
-  let fullName = cleanName;
+  let fullName = componentName;
 
   Object.keys(variants)
     .forEach((key) => {
@@ -113,6 +111,7 @@ const getFullNameForVariant = (componentName, variants) => {
  * Recursively dive into frame children and get components
  */
 const getComponentsFromFrame = (item, frameName, pageName, allComponents, ignorePattern, _components, _currentComponentName) => {
+
   const keyChildren = 'children';
   const keyType = 'type';
   const valueTypeComponent = 'COMPONENT';
@@ -123,7 +122,6 @@ const getComponentsFromFrame = (item, frameName, pageName, allComponents, ignore
   const typeIsComponent = item[keyType] === valueTypeComponent;
 
   if (item.name.indexOf(ignorePattern) !== 0) {
-
     if (typeIsComponent) {
 
       /**
@@ -135,15 +133,30 @@ const getComponentsFromFrame = (item, frameName, pageName, allComponents, ignore
       }
 
       const variantsFromComponent = getVariantsFromComponent(item.name);
+      let iconFullName;
 
-      const iconFullName = getFullNameForVariant(currentComponentName, variantsFromComponent);
+      if (Object.keys(variantsFromComponent).length === 0) {
+        // component name does not include variants
+        iconFullName = `${currentComponentName}-${item.name}`;
+      } else {
+        // component name includes variants
+        iconFullName = getFullNameForVariant(currentComponentName, variantsFromComponent);
+      }
+
       const iconDescription = getDescriptionForComponent(item.id, allComponents);
+
+      // for icons with no variants, name is the same as full name
+      let iconBaseName = iconFullName;
+
+      if (Object.keys(variantsFromComponent).length > 0) {
+        iconBaseName = currentComponentName;
+      }
 
       components.push({
         category: frameName,
-        fullName: iconFullName,
+        fullName: iconFullName.toLowerCase(),
         id: item.id,
-        name: currentComponentName,
+        name: iconBaseName.toLowerCase(),
         properties: iconDescription,
         type: pageName,
         variants: variantsFromComponent
@@ -161,7 +174,6 @@ const getComponentsFromFrame = (item, frameName, pageName, allComponents, ignore
       currentComponentName += currentComponentName.length === 0
         ? item.name
         : `-${item.name}`;
-
       item[keyChildren].forEach((child) => {
         getComponentsFromFrame(child, frameName, pageName, allComponents, ignorePattern, components, currentComponentName);
       });
@@ -454,6 +466,8 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
   }
 
   const icons = getIconNamesAndIds(frames, pageName, ignorePattern, allComponents);
+  console.log(icons);
+  return [];
 
   checkForDuplicates(icons);
 
