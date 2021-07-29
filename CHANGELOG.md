@@ -1,3 +1,10 @@
+## [4.15.10](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.9...v4.15.10) (2021-07-29)
+
+
+### Bug Fixes
+
+* test 3 icon description (triggered from Figma) [skip ci] ([efa9bf3](https://github.com/lyne-design-system/lyne-icons/commit/efa9bf337b6800417fc7d6ceab7a7c3ec7facd7d))
+
 ## [4.15.9](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.8...v4.15.9) (2021-07-29)
 
 
