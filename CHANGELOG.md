@@ -1,3 +1,10 @@
+## [4.15.14](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.13...v4.15.14) (2021-07-30)
+
+
+### Bug Fixes
+
+* fix issue with icons that generated doubled names ([dbb7c75](https://github.com/lyne-design-system/lyne-icons/commit/dbb7c75513c0a159aeb0964db3a7c661ee3dea49))
+
 ## [4.15.13](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.12...v4.15.13) (2021-07-29)
 
 
