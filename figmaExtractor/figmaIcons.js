@@ -128,7 +128,10 @@ const getComponentsFromFrame = (item, frameName, pageName, allComponents, ignore
        * if we're on first iteration and already found a component,
        * we need to get the name from it
        */
+      let foundComponentOnFirstLevel = false;
+
       if (currentComponentName.length === 0) {
+        foundComponentOnFirstLevel = true;
         currentComponentName = item.name;
       }
 
@@ -137,7 +140,11 @@ const getComponentsFromFrame = (item, frameName, pageName, allComponents, ignore
 
       if (Object.keys(variantsFromComponent).length === 0) {
         // component name does not include variants
-        iconFullName = `${currentComponentName}-${item.name}`;
+        if (foundComponentOnFirstLevel) {
+          iconFullName = currentComponentName;
+        } else {
+          iconFullName = `${currentComponentName}-${item.name}`;
+        }
       } else {
         // component name includes variants
         iconFullName = getFullNameForVariant(currentComponentName, variantsFromComponent);
