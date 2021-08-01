@@ -11,8 +11,9 @@ const config = {
   componentIgnorePattern: '_',
   frameIgnorePattern: '_',
   output: {
+    contentFile: 'icons',
     folder: 'dist',
-    infoFile: 'icons',
+    infoFile: 'iconsMeta',
     subfolder: 'icons'
   },
   pagesIgnorePattern: '_'
@@ -39,21 +40,36 @@ const config = {
       throw new Error('No relevant figma pages found.');
     }
 
-    const iconData = {
+    const iconMeta = {
       icons: [],
+      version: '0.0.0'
+    };
+
+    const iconSvgs = {
+      icons: {},
       version: '0.0.0'
     };
 
     for await (const page of pages) {
       const frames = figma.frames(page, config.frameIgnorePattern);
-      const iconsOfFrame = await figmaIcons(frames, apiConfig, page.name, config.componentIgnorePattern, figmaComponents);
+      const {
+        icons,
+        meta
+      } = await figmaIcons(frames, apiConfig, page.name, config.componentIgnorePattern, figmaComponents);
 
-      iconsOfFrame.forEach((icon) => {
-        iconData.icons.push(icon);
+      meta.forEach((icon) => {
+        iconMeta.icons.push(icon);
       });
+
+      Object.keys(icons)
+        .forEach((key) => {
+          const icon = icons[key];
+
+          iconSvgs.icons[key] = icon;
+        });
     }
 
-    writeSvgData(iconData, config);
+    writeSvgData(iconMeta, iconSvgs, config);
 
     console.log('-->> FIGMA SVG FILES SAVED');
 
