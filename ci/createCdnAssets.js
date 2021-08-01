@@ -19,16 +19,17 @@ const config = {
   cdnVersionsFile: 'versions.json',
   distFolder: 'dist',
   iconsFolder: 'icons',
-  iconsInfoFile: 'icons.json'
+  iconsMetaFile: 'iconsMeta.json',
+  iconsSvgFile: 'icons.json'
 };
 
-const writeVersionJsonFile = (version) => {
-  const infoJsonRaw = fs.readFileSync(`./${config.distFolder}/${config.iconsInfoFile}`);
+const writeVersionJsonFile = (version, fileName) => {
+  const infoJsonRaw = fs.readFileSync(`./${config.distFolder}/${fileName}`);
   const infoJson = JSON.parse(infoJsonRaw);
 
   infoJson.version = version;
 
-  fs.writeFileSync(`./${config.distFolder}/${config.iconsInfoFile}`, JSON.stringify(infoJson));
+  fs.writeFileSync(`./${config.distFolder}/${fileName}`, JSON.stringify(infoJson));
 };
 
 const copyFiles = (source, destination) => {
@@ -74,7 +75,8 @@ const createVersionsFile = () => {
 
     fileContent[file] = {
       icons: `${rootPath}/${config.iconsFolder}/`,
-      infoFile: `${rootPath}/${config.iconsInfoFile}`,
+      iconsFile: `${rootPath}/${config.iconsSvgFile}/`,
+      infoFile: `${rootPath}/${config.iconsMetaFile}`,
       url: rootPath
     };
 
@@ -105,7 +107,8 @@ const createIndexHtmlPage = () => {
 
       <h3>Latest Release</h3>
       <p><a href="/${config.iconsFolder}">Icons folder</a></p>
-      <p><a href="/${config.iconsInfoFile}">icons.json</a></p>
+      <p><a href="/${config.iconsMetaFile}">iconsMeta.json</a></p>
+      <p><a href="/${config.iconsSvgFile}">icons.json</a></p>
 
       <h3>Versions</h3>
       <ul>
@@ -166,13 +169,15 @@ const createIndexHtmlPage = () => {
   // create version folder
   fs.mkdirSync(versionDir);
 
-  // write new version icons.json
-  writeVersionJsonFile(version);
+  // write new version to icons.json and iconsMeta.json
+  writeVersionJsonFile(version, config.iconsMetaFile);
+  writeVersionJsonFile(version, config.iconsSvgFile);
 
   // delete icons folder in cdn folder
   rimraf.sync(rootIconsFolder);
 
   try {
+
     // copy files to archive version folder
     await copyFiles(distDir, versionDir);
 
