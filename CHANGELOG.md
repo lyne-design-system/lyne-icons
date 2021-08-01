@@ -1,3 +1,13 @@
+# [4.16.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.19...v4.16.0) (2021-08-01)
+
+
+### Features
+
+* write icons and icons meta to separate json files ([006b15b](https://github.com/lyne-design-system/lyne-icons/commit/006b15bc5a603606ad6e4590ff95af5ddf990b47))
+* write icons and icons meta to separate json files ([2fb8486](https://github.com/lyne-design-system/lyne-icons/commit/2fb8486f7e19813b069d4933169f7244500c6383))
+* write icons and icons meta to separate json files ([88ba1bb](https://github.com/lyne-design-system/lyne-icons/commit/88ba1bb3afe0c5cbe7552260494c1e57ba096d43))
+* write icons and icons meta to separate json files ([086a3aa](https://github.com/lyne-design-system/lyne-icons/commit/086a3aa41611737a3b22b36a7792b5afa3097cd6))
+
 ## [4.15.19](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.18...v4.15.19) (2021-08-01)
 
 
