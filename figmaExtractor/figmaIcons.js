@@ -405,7 +405,8 @@ const getIconContents = async (iconsInfo, pageName) => {
  * Make an object for each icon with id, name and svg-content
  */
 const extractSVGContent = async (responses) => {
-  const content = [];
+  const content = {};
+  const meta = [];
 
   for await (const response of responses) {
     const config = JSON.parse(response.config.data);
@@ -419,14 +420,15 @@ const extractSVGContent = async (responses) => {
 
     const cleanSvg = await svgSlimming(rawSvgData, slimConfig);
 
-    content.push({
-      ...config,
-      svg: cleanSvg
-    });
+    content[config.fullName] = cleanSvg;
+    meta.push(config);
 
   }
 
-  return content;
+  return {
+    content,
+    meta
+  };
 };
 
 /**
@@ -481,11 +483,16 @@ module.exports = async (frames, figmaConfig, pageName, ignorePattern, allCompone
   console.log(`SVG INFO: fetched url's to download svgs for page: ${pageName}`);
 
   const iconsInfo = addFigmaDownloadUrls(icons, iconsUrlsResponse);
-
   const svgResponses = await getIconContents(iconsInfo, pageName);
-  const svgContent = await extractSVGContent(svgResponses);
+  const {
+    content,
+    meta
+  } = await extractSVGContent(svgResponses);
 
   console.log(`SVG INFO: fetched svg's contents for page: ${pageName}`);
 
-  return svgContent;
+  return {
+    icons: content,
+    meta
+  };
 };
