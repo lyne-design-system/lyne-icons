@@ -1,8 +1,7 @@
 const fs = require('fs');
 const rimraf = require('rimraf');
 
-module.exports = (iconData, config) => {
-
+module.exports = (iconsMeta, iconsSvg, config) => {
   // make sure folder is there
   const outputFolder = `./${config.output.folder}`;
 
@@ -20,16 +19,24 @@ module.exports = (iconData, config) => {
   fs.mkdirSync(subFolder);
 
   // save icons
-  iconData.icons.forEach((icon) => {
-    try {
-      fs.writeFileSync(`${subFolder}/${icon.fullName}.svg`, icon.svg);
-    } catch (err) {
-      console.log('SVG INFO: error writing file', icon.fullName);
-    }
-  });
+  Object.keys(iconsSvg.icons)
+    .forEach((key) => {
+      const icon = iconsSvg.icons[key];
 
-  // save info file
-  fs.writeFileSync(`${outputFolder}/${config.output.infoFile}.json`, JSON.stringify(iconData));
+      try {
+        fs.writeFileSync(`${subFolder}/${key}.svg`, icon);
+      } catch (err) {
+        console.log('SVG INFO: error writing file', key);
+      }
+    });
+
+  // save json files with svg meta and svg content
+  try {
+    fs.writeFileSync(`${outputFolder}/${config.output.contentFile}.json`, JSON.stringify(iconsSvg));
+    fs.writeFileSync(`${outputFolder}/${config.output.infoFile}.json`, JSON.stringify(iconsMeta));
+  } catch (err) {
+    console.log('SVG INFO: error writing icons json file', err);
+  }
 
   console.log('SVG INFO: saved svg\'s');
 
