@@ -1,3 +1,10 @@
+# [4.17.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.16.0...v4.17.0) (2021-09-17)
+
+
+### Features
+
+* add test-icon for lyne-demo (triggered from Figma) [skip ci] ([4b4f255](https://github.com/lyne-design-system/lyne-icons/commit/4b4f2551ec1490709a9d2a0a839abef1579a6404))
+
 # [4.16.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.15.19...v4.16.0) (2021-08-01)
 
 
