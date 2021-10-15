@@ -1,3 +1,11 @@
+## [4.20.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.20.0...v4.20.1) (2021-10-15)
+
+
+### Bug Fixes
+
+* fake commit to test toolchain ([db57945](https://github.com/lyne-design-system/lyne-icons/commit/db5794572bf5452eeae8962f344785659fab23d8))
+* fake commit to test toolchain [skip ci] ([d9de5c7](https://github.com/lyne-design-system/lyne-icons/commit/d9de5c7d5bb93918be35837de3d18f715d06d0d5))
+
 # [4.20.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.19.0...v4.20.0) (2021-09-20)
 
 
