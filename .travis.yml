@@ -11,6 +11,7 @@ notifications:
       - "Author: %{author}"
       - "Result: %{result} in %{duration}"
     secure: iazEW2+X7BOdDG09FPmoM4lN+WhNbzMTvuxaSHohL1hlZjuFJMSYyscnF0zkQIoxha68b8RSG+o2xWG9PejS/TfFj9VhsaFDWx+Tybtt2cT6163hObeo0BRBwO8+0FzQ9XJqLvqevU86FwUYbwK9S+shKzH8GcI/sv+m55QcChHLvpKQrWEprKuPnMu8id2eVftpD8pUSVVyiGJe1zQ68Vn0evhVfUzTtQxzDhksyvhbWAwqKxrWt9UvYPG6A9a4a1dUZ1QgDTevLkrh1ZJ5ni0t7dnVIaLcQN2zQ2DGE+vc68i9jlay6uV+Qa8xbFvmdGT8kktIaoocXc+htLZ8dzQdYilASH4eHxguWMmWUPwhaNHdoAhAKFZ3CLLH8IIG7lNd73r/Hk2E3aqzmUnKFyvyNX4eu2/IT0gEiz0Uy9v9+1UsZYLXA4lqTH/jfzBAY569/ZC9w6TuyC0zGB8l1eLkbHff9/ojZ1gk4RdPCFwl2TpIVFx9WZ32BXC24icsr43Ayt7+hUNDGHJ8ykoyzB1jP5+sHbyPLKTokW7D7BQPiz0NpY+ipP3jqvcL/I3bPVg709ghabS1ooAp2RveMEkC0Ld/i6FGGPdBj3TdDxuyNyQZGMJWnfmZjAJ7oUMdi8zCSgrMyiGljHEU7k+ALYowGjti7VtUJTo/LhP9C7Q=
+
 jobs:
   include:
     - stage: build and deploy icons for master
