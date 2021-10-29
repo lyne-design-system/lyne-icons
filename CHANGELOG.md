@@ -1,3 +1,10 @@
+# [4.21.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.20.2...v4.21.0) (2021-10-29)
+
+
+### Features
+
+* add unicorn icon (triggered from Figma) [skip ci] ([e0438e2](https://github.com/lyne-design-system/lyne-icons/commit/e0438e2799974c9b155f5f51346a7e9c18625854))
+
 ## [4.20.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.20.1...v4.20.2) (2021-10-23)
 
 
