@@ -1,3 +1,10 @@
+# [4.23.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.22.0...v4.23.0) (2021-11-03)
+
+
+### Features
+
+* added ar-icon in fpl (triggered from Figma) [skip ci] ([fbfe3de](https://github.com/lyne-design-system/lyne-icons/commit/fbfe3de8953b82f0ad74f625890e1be584530c34))
+
 # [4.22.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.21.0...v4.22.0) (2021-11-03)
 
 
