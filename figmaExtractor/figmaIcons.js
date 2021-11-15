@@ -241,7 +241,7 @@ const getIconsUrlsRequestBatches = (ids, figmaConfig) => {
   const batchSize = 200;
   let batch = [];
 
-  console.log(`SVG INFO: fetch svg url's in batches of ${batchSize} ids.`);
+  console.log(`SVG INFO: fetch svg urls in batches of ${batchSize} ids.`);
 
   while (ids.length > 0) {
     if (batch.length < batchSize) {
@@ -415,6 +415,9 @@ const extractSVGContent = async (responses) => {
       params: {
         angelDigit: 6,
         sizeDigit: 6
+      },
+      rules: {
+        'rm-viewbox': false
       }
     };
 
