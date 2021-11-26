@@ -1,3 +1,10 @@
+# [4.25.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.24.0...v4.25.0) (2021-11-26)
+
+
+### Features
+
+* ra-adding viewbox attribute ([a14e67f](https://github.com/lyne-design-system/lyne-icons/commit/a14e67fac37037f8145d9581e136422b4282e784))
+
 # [4.24.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.23.0...v4.24.0) (2021-11-24)
 
 
