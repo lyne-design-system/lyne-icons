@@ -22,7 +22,7 @@
     "lyne-helper-eslint-config": "~1.0.1",
     "lyne-helper-figma-api": "~1.1.6",
     "minimist": "~1.2.5",
-    "netlify-cli": "~9.13.0",
+    "netlify-cli": "~9.16.4",
     "semantic-release": "~19.0.2",
     "semantic-release-slack-bot": "^3.0.0",
     "shelljs": "~0.8.4",
