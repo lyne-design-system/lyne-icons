@@ -26,7 +26,7 @@
     "semantic-release": "~19.0.2",
     "semantic-release-slack-bot": "^3.0.0",
     "shelljs": "~0.8.4",
-    "simple-git": "~3.4.0",
+    "simple-git": "~3.6.0",
     "svg-slim": "~2.0.3"
   },
   "files": [
