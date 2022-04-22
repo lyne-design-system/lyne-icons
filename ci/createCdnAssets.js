@@ -135,6 +135,18 @@ const createIndexHtmlPage = () => {
   fs.writeFileSync(`./${config.cdnFolder}/index.html`, html);
 };
 
+const createNetlifyToml = () => {
+  const netlifyToml = `
+[[headers]]
+# Define which paths this specific [[headers]] block will cover.
+for = "/*"
+  [headers.values]
+  Access-Control-Allow-Origin = "*"
+  `;
+
+  fs.writeFileSync(`./${config.cdnFolder}/netlify.toml`, netlifyToml);
+};
+
 (async () => {
 
   const args = argv(process.argv.slice(2));
@@ -189,6 +201,9 @@ const createIndexHtmlPage = () => {
 
     // create index page
     createIndexHtmlPage();
+
+    // create netlify.toml
+    createNetlifyToml();
 
     // add all files, commit and push
     await git.add(`${cdnDir}/*`);
