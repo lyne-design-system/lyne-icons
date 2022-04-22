@@ -1,3 +1,10 @@
+## [4.32.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.32.0...v4.32.1) (2022-04-22)
+
+
+### Bug Fixes
+
+* enable CORS headers on icons ([a751512](https://github.com/lyne-design-system/lyne-icons/commit/a751512c78321d5c5b485b2cb9872a9bcf818635))
+
 # [4.32.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.31.0...v4.32.0) (2022-04-19)
 
 
