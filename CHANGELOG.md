@@ -1,3 +1,10 @@
+## [4.34.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.34.0...v4.34.1) (2022-05-23)
+
+
+### Bug Fixes
+
+* added meta data (triggered from Figma) [skip ci] ([c4010e3](https://github.com/lyne-design-system/lyne-icons/commit/c4010e3f41d03292ac1dcfa2eea4c88abe40afbb))
+
 # [4.34.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.33.0...v4.34.0) (2022-05-23)
 
 
