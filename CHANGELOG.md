@@ -1,3 +1,10 @@
+# [4.34.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.33.0...v4.34.0) (2022-05-23)
+
+
+### Features
+
+* added timetable-icons (ir 18, ir 19, ir 47, ir 48) (triggered from Figma) [skip ci] ([b4bacc6](https://github.com/lyne-design-system/lyne-icons/commit/b4bacc620370bd58958b7238829ed1945a5abb75))
+
 # [4.33.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.32.1...v4.33.0) (2022-05-23)
 
 
