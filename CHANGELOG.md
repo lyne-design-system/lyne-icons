@@ -1,3 +1,10 @@
+## [4.35.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.35.0...v4.35.1) (2022-06-28)
+
+
+### Bug Fixes
+
+* added meta description for sn-xy icons (triggered from Figma) [skip ci] ([1445c3a](https://github.com/lyne-design-system/lyne-icons/commit/1445c3ad5a893ec223f2b957f44ed58f02dd6167))
+
 # [4.35.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.34.2...v4.35.0) (2022-06-28)
 
 
