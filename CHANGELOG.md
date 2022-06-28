@@ -1,3 +1,10 @@
+# [4.35.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.34.2...v4.35.0) (2022-06-28)
+
+
+### Features
+
+* added sn-xy products (triggered from Figma) [skip ci] ([8c37b8f](https://github.com/lyne-design-system/lyne-icons/commit/8c37b8fde3b97310df358ea383a4d3f3f1325b39))
+
 ## [4.34.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.34.1...v4.34.2) (2022-05-23)
 
 
