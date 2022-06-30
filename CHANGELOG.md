@@ -1,3 +1,10 @@
+# [4.36.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.35.1...v4.36.0) (2022-06-30)
+
+
+### Features
+
+* added new icon (checkpoints) (triggered from Figma) [skip ci] ([484fa60](https://github.com/lyne-design-system/lyne-icons/commit/484fa60f632ef273159068f2a5ffc7fde6c9f79e))
+
 ## [4.35.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.35.0...v4.35.1) (2022-06-28)
 
 
