@@ -1,3 +1,10 @@
+## [4.39.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.39.1...v4.39.2) (2022-07-01)
+
+
+### Bug Fixes
+
+* fix color in checkpoints (triggered from Figma) [skip ci] ([d8a2154](https://github.com/lyne-design-system/lyne-icons/commit/d8a215449fdb256f15d583c1852889f7bc090074))
+
 ## [4.39.1](https://github.com/lyne-design-system/lyne-icons/compare/v4.39.0...v4.39.1) (2022-07-01)
 
 
