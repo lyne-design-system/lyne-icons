@@ -1,3 +1,10 @@
+# [4.39.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.38.0...v4.39.0) (2022-07-01)
+
+
+### Features
+
+* test if icon export still work after move of the library [#3](https://github.com/lyne-design-system/lyne-icons/issues/3) (triggered from Figma) [skip ci] ([9c641cd](https://github.com/lyne-design-system/lyne-icons/commit/9c641cd89078060dbae90e8b8e4636b97d5a437d))
+
 # [4.38.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.37.0...v4.38.0) (2022-07-01)
 
 
