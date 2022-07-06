@@ -1,3 +1,10 @@
+## [4.39.3](https://github.com/lyne-design-system/lyne-icons/compare/v4.39.2...v4.39.3) (2022-07-06)
+
+
+### Bug Fixes
+
+* fix naming issues (triggered from Figma) [skip ci] ([86573aa](https://github.com/lyne-design-system/lyne-icons/commit/86573aa942b44f0383263090ef42381c95f0045b))
+
 ## [4.39.2](https://github.com/lyne-design-system/lyne-icons/compare/v4.39.1...v4.39.2) (2022-07-01)
 
 
