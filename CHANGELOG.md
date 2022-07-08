@@ -1,3 +1,10 @@
+# [4.40.0](https://github.com/lyne-design-system/lyne-icons/compare/v4.39.4...v4.40.0) (2022-07-08)
+
+
+### Features
+
+* fix naming issues, added robot icon (triggered from Figma) [skip ci] ([23a1553](https://github.com/lyne-design-system/lyne-icons/commit/23a15539b7e44a90fa9e614959eecf3adcdbdef4))
+
 ## [4.39.4](https://github.com/lyne-design-system/lyne-icons/compare/v4.39.3...v4.39.4) (2022-07-06)
 
 
